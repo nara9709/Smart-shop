@@ -1,5 +1,5 @@
 {
-  "name": "shoppy",
+  "name": "smart_shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -37,5 +37,9 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^7.0.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/nara9709/Smart-shop.git",
+  "author": "nara <worldkr19@gmail.com>",
+  "license": "MIT"
 }

@@ -1,11 +1,9 @@
 import React from 'react';
 
-const NewProduct = () => {
+export default function NewProduct() {
   return (
     <div>
       <h1>New Product</h1>
     </div>
   );
-};
-
-export default NewProduct;
+}

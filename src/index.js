@@ -10,11 +10,12 @@ import MyCart from './components/MyCart/MyCart';
 import NewProduct from './components/NewProduct/NewProduct';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
+import Auth from './service/auth';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App auth={Auth} />,
     errorElement: <NotFound />,
     children: [
       { index: true, path: '/', element: <Home /> },

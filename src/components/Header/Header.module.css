@@ -36,6 +36,18 @@ a {
   opacity: 50%;
   cursor: pointer;
 }
+.menu_profile {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+.menu_profile img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
 
 .icon_cart,
 .icon_edit {
@@ -50,6 +62,7 @@ a {
   .nav {
     display: block;
     height: 6rem;
+    padding-bottom: 1em;
   }
 
   .title_container {
@@ -61,5 +74,10 @@ a {
   }
   .menu li {
     padding: 0.5em;
+  }
+
+  .menu_profile {
+    padding: 0;
+    justify-content: center;
   }
 }

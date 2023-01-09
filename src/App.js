@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header/Header';
 
-function App({ auth }) {
+function App() {
   return (
     <>
-      <Header auth={auth} />
+      <Header />
       <Outlet />
     </>
   );

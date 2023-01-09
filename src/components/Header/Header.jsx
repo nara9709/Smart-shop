@@ -1,35 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-
 import styles from './Header.module.css';
+import login, { onUserStateChange, logout } from '../../service/firebase';
 
-export default function Header({ auth }) {
-  const [userInfo, setUserInfo] = useState(null);
-  const userAuth = new auth();
+export default function Header() {
+  const [user, setUser] = useState(null);
+
+  // When page is load, check user already login
+  useEffect(() => {
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
 
   // Login with google account
-  const logInUser = () => {
-    userAuth.loginWithGoogle().then((user) => {
-      setUserInfo(user.user);
-    });
+  const handleLogin = () => {
+    login().then(setUser);
   };
 
-  console.log(userInfo);
-
   // Logout
-  const logOutUser = () => {
-    userAuth
-      .logOut()
-      .then(() => {
-        console.log('Log out!');
-        setUserInfo(null);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleLogout = () => {
+    logout().then(setUser).catch(console.error);
   };
 
   return (
@@ -55,17 +50,17 @@ export default function Header({ auth }) {
             <MdOutlineModeEdit />
           </li>
         </Link>
-        {userInfo !== null && (
+        {user !== null && (
           <li className={styles.menu_profile}>
-            <img src={userInfo.photoURL} alt="Profile" />
-            <span>{userInfo.displayName}</span>
+            <img src={user.photoURL} alt="Profile" />
+            <span>{user.displayName}</span>
           </li>
         )}
         <Link to="">
-          {userInfo === null ? (
-            <li onClick={logInUser}>Login</li>
+          {user === null ? (
+            <li onClick={handleLogin}>Login</li>
           ) : (
-            <li onClick={logOutUser}> Logout</li>
+            <li onClick={handleLogout}> Logout</li>
           )}
         </Link>
       </ul>

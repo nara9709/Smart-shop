@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import styles from './Header.module.css';
 import login, { onUserStateChange, logout } from '../../service/firebase';
+import User from '../User/User';
 
 export default function Header() {
   const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // When page is load, check user already login
+  // When a page is loaded, check user has already login
   useEffect(() => {
-    onUserStateChange((user) => {
-      console.log(user);
-      setUser(user);
-    });
+    onUserStateChange(setUser);
   }, []);
-
-  // Login with google account
-  const handleLogin = () => {
-    login().then(setUser);
-  };
-
-  // Logout
-  const handleLogout = () => {
-    logout().then(setUser).catch(console.error);
-  };
 
   return (
     <nav className={styles.nav}>
@@ -40,27 +29,26 @@ export default function Header() {
         <Link to="/products">
           <li>Products</li>
         </Link>
-        <Link to="/carts">
-          <li className={styles.icon_cart}>
-            <BsCart4 />
-          </li>
-        </Link>
-        <Link to="products/new">
-          <li className={styles.icon_edit}>
-            <MdOutlineModeEdit />
-          </li>
-        </Link>
-        {user !== null && (
-          <li className={styles.menu_profile}>
-            <img src={user.photoURL} alt="Profile" />
-            <span>{user.displayName}</span>
-          </li>
+        {user && (
+          <Link to="/carts">
+            <li className={styles.icon_cart}>
+              <BsCart4 />
+            </li>
+          </Link>
         )}
+        {user && user.isAdmin && (
+          <Link to="products/new">
+            <li className={styles.icon_edit}>
+              <MdOutlineModeEdit />
+            </li>
+          </Link>
+        )}
+        {user && <User user={user} />}
         <Link to="">
-          {user === null ? (
-            <li onClick={handleLogin}>Login</li>
+          {!user ? (
+            <li onClick={login}>Login</li>
           ) : (
-            <li onClick={handleLogout}> Logout</li>
+            <li onClick={logout}> Logout</li>
           )}
         </Link>
       </ul>

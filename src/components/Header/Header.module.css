@@ -36,19 +36,6 @@ a {
   opacity: 50%;
   cursor: pointer;
 }
-.menu_profile {
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  font-size: 0.9em;
-}
-
-.menu_profile img {
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
-  margin-right: 0.5em;
-}
 
 .icon_cart,
 .icon_edit {

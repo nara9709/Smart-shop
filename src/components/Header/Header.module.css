@@ -1,3 +1,5 @@
+@value blandColor from '../../common/colors.css';
+
 a {
   color: black;
   text-decoration: none;
@@ -18,7 +20,7 @@ a {
   font-weight: 600;
   display: flex;
   align-items: center;
-  color: #cb997e;
+  color: blandColor;
 }
 
 .menu {

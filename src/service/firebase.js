@@ -7,15 +7,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
-import {
-  getDatabase,
-  ref,
-  query,
-  equalTo,
-  onValue,
-  get,
-  child,
-} from 'firebase/database';
+import { getDatabase, ref, get, set, child } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -27,6 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const db = getDatabase(firebaseApp);
 
 const provider = new GoogleAuthProvider();
 
@@ -65,5 +58,26 @@ async function adminUser(user) {
     })
     .catch((error) => {
       console.error(error);
+    });
+}
+
+export async function writeProductData(product, uid, imageUrl) {
+  const { title, price, category, description } = product;
+
+  return set(ref(db, 'products/' + uid), {
+    category,
+    description,
+    id: uid,
+    image: imageUrl,
+    options: product.options.split(','),
+    price,
+    title,
+  })
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.error(error);
+      return false;
     });
 }

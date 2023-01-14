@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import upload from '../../service/cloudinary';
 import styles from './NewProduct.module.css';
+import { v4 as uuid } from 'uuid';
+import { writeProductData } from '../../service/firebase';
 
 export default function NewProduct() {
-  const [product, setproduct] = useState({});
+  const [product, setProduct] = useState({});
   const [file, setFile] = useState();
+  const [isUploaded, setIsUploaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsUploaded(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isUploaded]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     upload(file).then((url) => {
-      console.log(url);
-      console.log(product);
-      //TODOFirebase에 새로운 제품 추가
+      // Add new product to fireabse
+      writeProductData(product, uuid(), url) //
+        // Update isUploaded value to display a completion message
+        .then((res) => setIsUploaded(res));
     });
   };
 
@@ -27,12 +41,18 @@ export default function NewProduct() {
     }
 
     // When change a input, update it
-    setproduct((product) => ({ ...product, [name]: value }));
+    setProduct((product) => ({ ...product, [name]: value }));
   };
 
   return (
     <div className={styles.container}>
       <p>Post New item</p>
+      {isUploaded && (
+        <p>
+          {' '}
+          <strong>{product.title}</strong> has been uploaded!{' '}
+        </p>
+      )}
       {file && (
         <img
           src={URL.createObjectURL(file)}
@@ -83,7 +103,7 @@ export default function NewProduct() {
         />
         <input
           type="text"
-          placeholder="Options(Separate options with comma(,))"
+          placeholder="Options(Separated by comma(,))"
           value={product.options ?? ''}
           onChange={handleChange}
           name="options"

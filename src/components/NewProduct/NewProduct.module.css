@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+  font-size: 2em;
+}
+
+.container form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.container input {
+  width: 100%;
+  height: 2em;
+  border-radius: 0;
+  border: 1px solid black;
+  display: flex;
+  padding: 0.5em;
+  margin: 0.3em;
+}
+
+.button {
+  width: 50%;
+  color: #fff;
+  margin: 1em;
+  font-size: 0.5em;
+  font-weight: 600;
+  background-color: #cb997e;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+.productImage {
+  width: 80%;
+  height: 100%;
+  margin-bottom: 1em;
+}

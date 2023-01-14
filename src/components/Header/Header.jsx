@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
-import { Link, redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import login, { onUserStateChange, logout } from '../../service/firebase';
+
 import User from '../User/User';
 import Button from '../UI/Button/Button';
 import { useAuthContext } from '../context/AuthContext';

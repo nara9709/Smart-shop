@@ -6,15 +6,11 @@ import { Link, redirect } from 'react-router-dom';
 import styles from './Header.module.css';
 import login, { onUserStateChange, logout } from '../../service/firebase';
 import User from '../User/User';
+import Button from '../UI/Button/Button';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Header() {
-  const [user, setUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  // When a page is loaded, check user has already login
-  useEffect(() => {
-    onUserStateChange(setUser);
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   return (
     <nav className={styles.nav}>
@@ -45,10 +41,15 @@ export default function Header() {
         )}
         {user && <User user={user} />}
         <Link to="">
-          {!user ? (
-            <li onClick={login}>Login</li>
-          ) : (
-            <li onClick={logout}> Logout</li>
+          {!user && (
+            <li>
+              <Button onClick={login} text="Login" />
+            </li>
+          )}
+          {user && (
+            <li>
+              <Button onClick={logout} text="Logout" />
+            </li>
           )}
         </Link>
       </ul>

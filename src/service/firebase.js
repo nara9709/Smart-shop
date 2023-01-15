@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { v4 as uuid } from 'uuid';
 
 import { getDatabase, ref, get, set, child } from 'firebase/database';
 
@@ -33,6 +34,7 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
+// Observe user state
 export function onUserStateChange(callback) {
   onAuthStateChanged(auth, async (user) => {
     const updatedUser = user ? await adminUser(user) : null;
@@ -61,17 +63,17 @@ async function adminUser(user) {
     });
 }
 
-export async function writeProductData(product, uid, imageUrl) {
+// Upload new product data
+export async function addNewProduct(product, image) {
   const { title, price, category, description } = product;
+  const id = uuid();
 
-  return set(ref(db, 'products/' + uid), {
-    category,
-    description,
-    id: uid,
-    image: imageUrl,
+  return set(ref(db, 'products/' + id), {
+    ...product,
+    price: parseInt(product.price),
+    id,
+    image,
     options: product.options.split(','),
-    price,
-    title,
   })
     .then(() => {
       return true;

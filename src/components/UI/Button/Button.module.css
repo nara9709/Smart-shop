@@ -2,9 +2,9 @@
 
 .button {
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1rem;
   font-weight: 600;
-  background-color: blandColor;
+  background-color: #cb997e;
   outline: none;
   border: 0;
   border-radius: 2px;

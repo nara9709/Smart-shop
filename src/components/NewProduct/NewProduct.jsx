@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import upload from '../../service/cloudinary';
 import styles from './NewProduct.module.css';
-import { v4 as uuid } from 'uuid';
-import { writeProductData } from '../../service/firebase';
+
+import { addNewProduct } from '../../service/firebase';
+import Button from '../UI/Button/Button';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
-  const [isUploaded, setIsUploaded] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsUploaded(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isUploaded]);
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsUploading(true);
 
-    upload(file).then((url) => {
-      // Add new product to fireabse
-      writeProductData(product, uuid(), url) //
-        // Update isUploaded value to display a completion message
-        .then((res) => setIsUploaded(res));
-    });
+    upload(file)
+      .then((url) => {
+        // Add new product to fireabse
+        addNewProduct(product, url) //
+          // Update success value to display a completion message
+          .then((res) => {
+            setSuccess(res);
+            setTimeout(() => {
+              setSuccess(false);
+            }, 5000);
+          });
+      })
+      .finally(() => setIsUploading(false));
   };
 
   const handleChange = (e) => {
@@ -47,10 +48,9 @@ export default function NewProduct() {
   return (
     <div className={styles.container}>
       <p>Post New item</p>
-      {isUploaded && (
-        <p>
-          {' '}
-          <strong>{product.title}</strong> has been uploaded!{' '}
+      {success && (
+        <p className={styles.successMeg}>
+          ✅{product.title} has been uploaded!
         </p>
       )}
       {file && (
@@ -110,7 +110,14 @@ export default function NewProduct() {
           required
         />
 
-        <button className={styles.button}>Post Item</button>
+        {/* <button className={styles.button}>Post Item</button> */}
+
+        <span className={styles.buttonContainer}>
+          <Button
+            text={isUploading ? 'Uploading...' : 'Add new product'}
+            disable={isUploading}
+          ></Button>
+        </span>
       </form>
     </div>
   );

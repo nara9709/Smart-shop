@@ -26,6 +26,8 @@ export default function NewProduct() {
             setTimeout(() => {
               setSuccess(false);
             }, 5000);
+            setProduct({});
+            setFile(null);
           });
       })
       .finally(() => setIsUploading(false));

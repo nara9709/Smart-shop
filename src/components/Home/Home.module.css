@@ -1,0 +1,28 @@
+.slideContainer {
+}
+
+.each_slide_effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center center;
+  height: 350px;
+}
+
+.each-slide-effect span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .slideContainer {
+    zoom: 50%;
+  }
+  .each-slide-effect > div {
+    width: 350px;
+    background-size: 300px 150px;
+  }
+}

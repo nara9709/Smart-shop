@@ -3,11 +3,12 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import styles from './Home.module.css';
 import { getProductList } from '../../service/firebase';
+import ItemList from '../ItemList/ItemList';
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     getProductList().then((res) => {
-      console.log(res);
       setProducts(res);
     });
   }, []);
@@ -37,14 +38,7 @@ export default function Home() {
           </div>
         </Slide>
       </div>
-
-      <section>
-        <ul>
-          {Object.keys(products).forEach((item) => {
-            return console.log(item[0]);
-          })}
-        </ul>
-      </section>
+      <ItemList products={products}></ItemList>
     </>
   );
 }

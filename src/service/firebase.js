@@ -8,7 +8,20 @@ import {
 } from 'firebase/auth';
 import { v4 as uuid } from 'uuid';
 
-import { getDatabase, ref, get, set, child } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  get,
+  set,
+  child,
+  onValue,
+  query,
+  orderByKey,
+  orderByValue,
+  orderByChild,
+  equalTo,
+  update,
+} from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -65,7 +78,6 @@ async function adminUser(user) {
 
 // Upload new product data
 export async function addNewProduct(product, image) {
-  const { title, price, category, description } = product;
   const id = uuid();
 
   return set(ref(db, 'products/' + id), {
@@ -97,4 +109,49 @@ export async function getProductList() {
     .catch((error) => {
       console.error(error);
     });
+}
+
+// Add product to Cart
+export async function addCart(userId, title, price, image, productId, option) {
+  const dbRef = ref(getDatabase(firebaseApp));
+
+  // Find the same products & options in the cart
+  return get(child(dbRef, 'users/' + userId + '/carts/' + productId)).then(
+    (snapshot) => {
+      // Check if there's the same product in the cart
+      if (snapshot.exists()) {
+        // If It exists, check if it's the same option
+        if (snapshot.val()[option]) {
+          // Update count only if same option
+          const count = snapshot.val()[option].count + 1;
+          const updatedData = {
+            title,
+            price,
+            image,
+            productId,
+            count,
+          };
+
+          update(
+            ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
+            updatedData
+          );
+        }
+        return;
+      } else {
+        // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
+        return set(
+          ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
+          {
+            title,
+            price: parseInt(price),
+            option,
+            image,
+            productId,
+            count: 1,
+          }
+        );
+      }
+    }
+  );
 }

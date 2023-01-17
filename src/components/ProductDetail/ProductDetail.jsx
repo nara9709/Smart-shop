@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Reviews from '../Reviews/Reviews.jsx';
 import Button from '../UI/Button/Button.jsx';
 import styles from './ProductDetail.module.css';
+import { useAuthContext } from '../context/AuthContext';
+import { addCart } from '../../service/firebase.js';
 
 export default function ProductDetail() {
-  const [option, setOption] = useState();
-  const { image, title, category, price, description, options } =
+  const userId = useAuthContext().uid;
+  let optionRef = useRef();
+  const { image, title, category, price, description, options, id } =
     useLocation().state.product;
   const product = useLocation().state;
   const navigate = useNavigate();
 
-  const addCart = () => {
-    navigate('/carts', { state: { image, title, category, price, option } });
-    console.log(product);
+  // Add product to Cart
+  const addProductCart = () => {
+    const option = optionRef.current.value;
+
+    // Pass product info as parameters
+    addCart(userId, title, price, image, id, option).then((res) => {
+      console.log(res);
+    });
+    // navigate('/carts', { state: { image, title, category, price, option } });
+    // console.log(product);
   };
   return (
     <>
@@ -27,19 +37,13 @@ export default function ProductDetail() {
           </div>
           <p className={styles.description}>{description}</p>
           <span>Options: </span>
-          <select
-            onChange={(e) => {
-              setOption(e.target.value);
-            }}
-            className={styles.options}
-            name="options"
-          >
+          <select ref={optionRef} className={styles.options} name="options">
             {options.map((option) => {
               return <option value={option}>{option}</option>;
             })}
           </select>
           <p className={styles.button}>
-            <Button onClick={addCart} text="Add cart"></Button>
+            <Button onClick={addProductCart} text="Add cart"></Button>
           </p>
         </div>
       </section>

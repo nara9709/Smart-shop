@@ -1,0 +1,75 @@
+@value brandGrey, brandColor from '../../common/colors.css';
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.product_info_container {
+  width: 50%;
+  text-align: start;
+  margin-left: 2em;
+  margin-bottom: 3em;
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+.titleContainer {
+  border-bottom: 1px solid brandColor;
+  font-size: 1.2em;
+}
+
+.titleContainer h4 {
+  margin-bottom: 0.7em;
+}
+
+.image {
+  width: 40%;
+  height: 100%;
+}
+
+.category {
+  font-size: 0.9em;
+  color: brandGrey;
+  text-align: start;
+}
+
+.options {
+  border: 1px solid brandColor;
+  padding: 0.3em;
+}
+
+.button {
+  margin-top: 2em;
+}
+
+/* Med size  */
+@media screen and (max-width: 1200px) {
+  .image {
+    width: 50%;
+    height: 100%;
+  }
+}
+
+/* Small size */
+@media screen and (max-width: 480px) {
+  .image {
+    width: 70%;
+    height: 100%;
+  }
+
+  .container {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .product_info_container {
+    margin-left: 0;
+    margin-top: 1em;
+    width: 100%;
+  }
+
+  .button {
+    text-align: center;
+  }
+}

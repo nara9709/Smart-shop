@@ -1,10 +1,10 @@
-@value blandColor from '../../../common/colors.css';
+@value brandColor from '../../../common/colors.css';
 
 .button {
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
-  background-color: #cb997e;
+  background-color: brandColor;
   outline: none;
   border: 0;
   border-radius: 2px;

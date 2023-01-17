@@ -1,4 +1,4 @@
-@value blandColor from '../../common/colors.css';
+@value brandColor from '../../common/colors.css';
 
 a {
   color: black;
@@ -20,7 +20,7 @@ a {
   font-weight: 600;
   display: flex;
   align-items: center;
-  color: blandColor;
+  color: brandColor;
 }
 
 .menu {

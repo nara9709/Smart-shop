@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getProductList } from '../../service/firebase.js';
 import Item from '../Item/Item.jsx';
 import styles from './ItemList.module.css';

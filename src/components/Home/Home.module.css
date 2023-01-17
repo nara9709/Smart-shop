@@ -22,7 +22,7 @@
     zoom: 50%;
   }
   .each-slide-effect > div {
-    width: 350px;
+    width: 100%;
     background-size: 300px 150px;
   }
 }

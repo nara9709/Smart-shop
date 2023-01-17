@@ -1,3 +1,5 @@
+@value brandGrey from '../../common/colors.css';
+
 .image {
   width: 100%;
   height: 350px;
@@ -16,8 +18,15 @@
   margin: 0;
   padding: 1em;
   font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price {
   font-weight: 600;
+}
+
+.category {
+  color: brandGrey;
 }

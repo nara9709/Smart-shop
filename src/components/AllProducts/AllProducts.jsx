@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import ItemList from '../ItemList/ItemList';
 
 export default function AllProducts() {
-  return (
-    <div>
-      <h1>All Products</h1>
-    </div>
-  );
+  return <ItemList></ItemList>;
 }

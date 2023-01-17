@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import styles from './Home.module.css';
-import { getProductList } from '../../service/firebase';
 import ItemList from '../ItemList/ItemList';
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getProductList().then((res) => {
-      setProducts(res);
-    });
-  }, []);
-
   const images = [
     'https://res.cloudinary.com/nara9709/image/upload/v1673757107/2_purapl.png',
     'https://res.cloudinary.com/nara9709/image/upload/v1673757107/1_kwkkf5.png',
@@ -38,7 +30,7 @@ export default function Home() {
           </div>
         </Slide>
       </div>
-      <ItemList products={products}></ItemList>
+      <ItemList></ItemList>
     </>
   );
 }

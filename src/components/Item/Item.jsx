@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './Item.module.css';
 
-function Item({ product }) {
+function Item({ product: { id, image, title, category, price } }) {
   return (
     <>
-      <img className={styles.image} src={product.image} alt={product.title} />
+      <img className={styles.image} src={image} alt={title} />
       <div className={styles.infoBox}>
         <span>
           <p>
-            {product.title}
-            <p>{product.category}</p>
+            {title}
+            <p>{category}</p>
           </p>
         </span>
-        <span className={styles.price}> ${product.price}</span>
+        <span className={styles.price}> ${price}</span>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import { v4 as uuid } from 'uuid';
 
-import { getDatabase, ref, get, set, child, onValue } from 'firebase/database';
+import { getDatabase, ref, get, set, child } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -85,15 +85,13 @@ export async function addNewProduct(product, image) {
 }
 
 // Get product Data
-
 export async function getProductList() {
-  const dbRef = ref(getDatabase(firebaseApp));
-
-  return get(child(dbRef, `products`))
+  return get(ref(db, 'products'))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        return snapshot.val();
+        return Object.values(snapshot.val());
       } else {
+        return [];
       }
     })
     .catch((error) => {

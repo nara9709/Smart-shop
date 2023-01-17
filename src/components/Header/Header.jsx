@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiShoppingBag } from 'react-icons/fi';
+import { CiWheat } from 'react-icons/ci';
 import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
@@ -16,8 +16,8 @@ export default function Header() {
     <nav className={styles.nav}>
       <Link to="">
         <p className={styles.title_container}>
-          <FiShoppingBag />
-          Smart Shop
+          <CiWheat />
+          Skin N Body
         </p>
       </Link>
 

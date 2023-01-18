@@ -30,3 +30,7 @@
 .category {
   color: brandGrey;
 }
+
+.titleContainer {
+  text-align: start;
+}

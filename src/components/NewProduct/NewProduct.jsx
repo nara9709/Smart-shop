@@ -4,6 +4,10 @@ import styles from './NewProduct.module.css';
 
 import { addNewProduct } from '../../service/firebase';
 import Button from '../UI/Button/Button';
+import { Box, CircularProgress, Fab, Stack } from '@mui/material';
+import { green } from '@mui/material/colors';
+import CheckIcon from '@mui/icons-material/Check';
+import SaveIcon from '@mui/icons-material/Save';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
@@ -45,6 +49,15 @@ export default function NewProduct() {
 
     // When change a input, update it
     setProduct((product) => ({ ...product, [name]: value }));
+  };
+
+  const buttonSx = {
+    ...(success && {
+      bgcolor: green[500],
+      '&:hover': {
+        bgcolor: green[700],
+      },
+    }),
   };
 
   return (
@@ -112,14 +125,30 @@ export default function NewProduct() {
           required
         />
 
-        {/* <button className={styles.button}>Post Item</button> */}
+        <span className={styles.buttonContainer}></span>
 
-        <span className={styles.buttonContainer}>
-          <Button
-            text={isUploading ? 'Uploading...' : 'Add new product'}
-            disable={isUploading}
-          ></Button>
-        </span>
+        <Box sx={{ m: 1, position: 'relative' }}>
+          <Fab
+            aria-label="save"
+            color="primary"
+            sx={buttonSx}
+            onClick={handleSubmit}
+          >
+            {success ? <CheckIcon /> : <SaveIcon />}
+          </Fab>
+          {isUploading && (
+            <CircularProgress
+              size={68}
+              sx={{
+                color: green[500],
+                position: 'absolute',
+                top: -6,
+                left: -6,
+                zIndex: 1,
+              }}
+            />
+          )}
+        </Box>
       </form>
     </div>
   );

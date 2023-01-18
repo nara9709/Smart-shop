@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { getProductList } from '../../service/firebase.js';
@@ -27,8 +28,10 @@ function ItemList() {
         {products &&
           Object.keys(products).map((item) => {
             return (
-              <li key={item} className={styles.item}>
-                <Item product={products[item]} />
+              <li key={item}>
+                <Paper className={styles.item} elevation={2}>
+                  <Item product={products[item]} />
+                </Paper>
               </li>
             );
           })}

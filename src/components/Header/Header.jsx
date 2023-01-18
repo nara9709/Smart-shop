@@ -1,12 +1,11 @@
 import React from 'react';
-import { CiWheat } from 'react-icons/ci';
 import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 import User from '../User/User';
-import Button from '../UI/Button/Button';
+import Button from '@mui/material/Button';
 import { useAuthContext } from '../context/AuthContext';
 
 export default function Header() {
@@ -15,12 +14,12 @@ export default function Header() {
   return (
     <nav className={styles.nav}>
       <Link to="">
-        <p className={styles.title_container}>
-          <CiWheat />
-          Skin N Body
-        </p>
+        <img
+          className={styles.logo}
+          src="https://res.cloudinary.com/nara9709/image/upload/v1674002224/logo_efbz0t.png"
+          alt="logo"
+        />
       </Link>
-
       <ul className={styles.menu}>
         <Link to="/products">
           <li>Products</li>
@@ -43,12 +42,16 @@ export default function Header() {
         <Link to="">
           {!user && (
             <li>
-              <Button onClick={login} text="Login" />
+              <Button onClick={login} size="medium" variant="contained">
+                Login
+              </Button>
             </li>
           )}
           {user && (
             <li>
-              <Button onClick={logout} text="Logout" />
+              <Button onClick={logout} size="medium" variant="contained">
+                Logout
+              </Button>
             </li>
           )}
         </Link>

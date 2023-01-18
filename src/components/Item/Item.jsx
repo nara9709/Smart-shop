@@ -15,11 +15,9 @@ function Item({ product, product: { id, image, title, category, price } }) {
     <div div onClick={goToDetail}>
       <img className={styles.image} src={image} alt={title} />
       <div className={styles.infoBox}>
-        <span>
-          <p>
-            {title}
-            <p className={styles.category}>{category}</p>
-          </p>
+        <span className={styles.titleContainer}>
+          <p> {title}</p>
+          <p className={styles.category}>{category}</p>
         </span>
         <span className={styles.price}> ${price}</span>
       </div>

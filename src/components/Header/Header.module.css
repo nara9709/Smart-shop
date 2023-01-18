@@ -5,7 +5,7 @@ a {
   text-decoration: none;
 }
 .nav {
-  height: 4rem;
+  height: 6rem;
   display: flex;
   justify-content: space-between;
   font-family: fenwick, sans-serif;
@@ -38,6 +38,10 @@ a {
   opacity: 50%;
   cursor: pointer;
 }
+.logo {
+  width: 100px;
+  height: 100%;
+}
 
 .icon_cart,
 .icon_edit {
@@ -52,7 +56,8 @@ a {
   .nav {
     display: block;
     height: 6rem;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
+    display: inline;
   }
 
   .title_container {

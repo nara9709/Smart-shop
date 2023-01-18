@@ -19,6 +19,10 @@
   font-size: 1.2em;
 }
 
+.selectContainer {
+  margin-bottom: 1.5em;
+}
+
 .titleContainer h4 {
   margin-bottom: 0.7em;
 }
@@ -39,8 +43,8 @@
   padding: 0.3em;
 }
 
-.button {
-  margin-top: 2em;
+.description {
+  margin-bottom: 2em;
 }
 
 /* Med size  */

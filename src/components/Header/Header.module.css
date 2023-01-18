@@ -39,6 +39,7 @@ a {
   cursor: pointer;
 }
 .logo {
+  padding-top: 0.2em;
   width: 100px;
   height: 100%;
 }
@@ -56,6 +57,7 @@ a {
   .nav {
     display: block;
     height: 6rem;
+
     padding-bottom: 0.5em;
     display: inline;
   }
@@ -76,6 +78,7 @@ a {
     justify-content: center;
   }
   .logo {
+    padding: 1em;
     width: 150px;
   }
 }

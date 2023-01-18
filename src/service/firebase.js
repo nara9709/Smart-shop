@@ -21,6 +21,7 @@ import {
   orderByChild,
   equalTo,
   update,
+  remove,
 } from 'firebase/database';
 
 const firebaseConfig = {
@@ -111,46 +112,64 @@ export async function getProductList() {
     });
 }
 
-// Add product to Cart
-export async function addCart(userId, title, price, image, productId, option) {
-  const dbRef = ref(getDatabase(firebaseApp));
-
-  // Find the same products & options in the cart
-  return get(child(dbRef, 'users/' + userId + '/carts/' + productId)).then(
-    (snapshot) => {
-      // Check if there's the same product in the cart
-      if (snapshot.exists()) {
-        // If It exists, check if it's the same option
-        if (snapshot.val()[option]) {
-          // Update count only if same option
-          const count = snapshot.val()[option].count + 1;
-          const updatedData = {
-            title,
-            price,
-            image,
-            productId,
-            count,
-          };
-
-          update(
-            ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
-            updatedData
-          );
-          return;
-        }
-      }
-      // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
-      return set(ref(db, 'users/' + userId + `/carts/${productId}/${option}`), {
-        title,
-        price: parseInt(price),
-        option,
-        image,
-        productId,
-        count: 1,
-      });
-    }
-  );
+// Get product from Cart
+export async function getCart(userId) {
+  return get(ref(db, `${userId}/carts`)) //
+    .then((snapshot) => {
+      const items = snapshot.val() || {};
+      return Object.values(items);
+    });
 }
+
+// Add product to Cart
+export async function addOrUpdateToCart(userId, product) {
+  return set(ref(db, `${userId}/carts/${product.id}`), product);
+}
+
+// Remove product from Cart
+export async function removeFromCart(userId, productId) {
+  return remove(ref(db, `${userId}/carts/${productId}`));
+}
+
+// export async function addCart(userId, title, price, image, productId, option) {
+//   const dbRef = ref(getDatabase(firebaseApp));
+
+//   // Find the same products & options in the cart
+//   return get(child(dbRef, 'users/' + userId + '/carts/' + productId)).then(
+//     (snapshot) => {
+//       // Check if there's the same product in the cart
+//       if (snapshot.exists()) {
+//         // If It exists, check if it's the same option
+//         if (snapshot.val()[option]) {
+//           // Update count only if same option
+//           const count = snapshot.val()[option].count + 1;
+//           const updatedData = {
+//             title,
+//             price,
+//             image,
+//             productId,
+//             count,
+//           };
+
+//           update(
+//             ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
+//             updatedData
+//           );
+//           return;
+//         }
+//       }
+//       // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
+//       return set(ref(db, 'users/' + userId + `/carts/${productId}/${option}`), {
+//         title,
+//         price: parseInt(price),
+//         option,
+//         image,
+//         productId,
+//         count: 1,
+//       });
+//     }
+//   );
+// }
 
 // Get cart items
 export async function getCartItems(userId) {

@@ -1,0 +1,17 @@
+@value brandColor from '../../common/colors.css';
+
+.container {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -22px;
+  right: -7px;
+  background-color: brandColor;
+  font-size: 0.6em;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+}

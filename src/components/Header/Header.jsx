@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsCart4 } from 'react-icons/bs';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
@@ -7,6 +6,8 @@ import styles from './Header.module.css';
 import User from '../User/User';
 import Button from '@mui/material/Button';
 import { useAuthContext } from '../context/AuthContext';
+
+import CartStatus from '../CartStatus/CartStatus';
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
@@ -27,7 +28,7 @@ export default function Header() {
         {user && (
           <Link to="/carts">
             <li className={styles.icon_cart}>
-              <BsCart4 />
+              <CartStatus></CartStatus>
             </li>
           </Link>
         )}

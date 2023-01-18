@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router';
 import Reviews from '../Reviews/Reviews.jsx';
 import styles from './ProductDetail.module.css';
 import { useAuthContext } from '../context/AuthContext';
-import { addCart } from '../../service/firebase.js';
+import { addOrUpdateToCart } from '../../service/firebase.js';
 import {
   Box,
   FormControl,
@@ -14,6 +14,7 @@ import {
   Typography,
   Button,
 } from '@mui/material';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function ProductDetail() {
   const userId = useAuthContext().uid;
@@ -23,6 +24,7 @@ export default function ProductDetail() {
   const [option, setOption] = useState(options[0]);
   const [openAlert, setOpenAlert] = useState(false);
   const [openAfterCart, setOpenAfterCart] = useState(false);
+  const queryClient = useQueryClient();
 
   // Handling modal window
   const handleModalOpen = () =>
@@ -45,10 +47,15 @@ export default function ProductDetail() {
       return;
     }
 
+    const product = { id, title, price, option, quantity: 1 };
+
     // Pass product info as parameters
-    addCart(userId, title, price, image, id, option).then(() => {
+    addOrUpdateToCart(userId, product).then(() => {
       handleModalOpen();
     });
+
+    // Update cart bedge count
+    queryClient.invalidateQueries({ queryKey: ['carts'] });
   };
 
   // Go to Cart
@@ -94,6 +101,9 @@ export default function ProductDetail() {
             className={styles.button}
             onClick={addProductCart}
             fullWidth
+            sx={{
+              marginTop: 3,
+            }}
           >
             Add Cart
           </Button>
@@ -131,10 +141,22 @@ export default function ProductDetail() {
             ✅Your item has been added!
           </Typography>
           <div className={styles.buttonContainer}>
-            <Button variant="contained" onClick={handleModalClose}>
+            <Button
+              variant="contained"
+              onClick={handleModalClose}
+              sx={{
+                marginTop: 3,
+              }}
+            >
               Continue
             </Button>
-            <Button variant="contained" onClick={goToCart}>
+            <Button
+              variant="contained"
+              onClick={goToCart}
+              sx={{
+                marginTop: 3,
+              }}
+            >
               Go to cart
             </Button>
           </div>

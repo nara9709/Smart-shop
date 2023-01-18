@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import styles from './MyCart.module.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { redirect } from 'react-router';
 import { getCartItems } from '../../service/firebase';
 import { useAuthContext } from '../context/AuthContext';
@@ -12,6 +12,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 export default function MyCart({ user }) {
   const userId = useAuthContext().uid;
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (!user) {
@@ -22,11 +23,23 @@ export default function MyCart({ user }) {
   const {
     isLoading,
     error,
+    refetch,
     data: carts,
-  } = useQuery(['carts'], () => getCartItems(userId), {
-    staleTime: 500000,
-    refetchOnMount: false,
-  });
+  } = useQuery(
+    ['cart'],
+    () => {
+      getCartItems(userId);
+    },
+    {
+      staleTime: 500000,
+      refetchOnMount: false,
+    }
+  );
+
+  // Get data again when page is load
+  useEffect(() => {
+    refetch();
+  }, []);
 
   console.log(carts);
 
@@ -77,6 +90,13 @@ export default function MyCart({ user }) {
             );
           })}
       </ul>
+
+      <div>
+        <span>
+          <span>Total</span>
+          {total}
+        </span>
+      </div>
     </section>
   );
 }

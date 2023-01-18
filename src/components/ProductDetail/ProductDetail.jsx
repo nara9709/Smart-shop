@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Reviews from '../Reviews/Reviews.jsx';
 import styles from './ProductDetail.module.css';
 import { useAuthContext } from '../context/AuthContext';
@@ -16,15 +16,20 @@ import {
 } from '@mui/material';
 
 export default function ProductDetail() {
-  const [option, setOption] = useState();
-  const { userId } = useAuthContext();
+  const userId = useAuthContext().uid;
   const { image, title, category, price, description, options, id } =
     useLocation().state.product;
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const [option, setOption] = useState(options[0]);
+  const [openAlert, setOpenAlert] = useState(false);
+  const [openAfterCart, setOpenAfterCart] = useState(false);
 
   // Handling modal window
-  const handleModalOpen = () => setOpen(true);
-  const handleModalClose = () => setOpen(false);
+  const handleModalOpen = () =>
+    userId ? setOpenAfterCart(true) : setOpenAlert(true);
+  const handleModalClose = () => {
+    userId ? setOpenAfterCart(false) : setOpenAlert(false);
+  };
 
   // Get option value
   const getOption = (e) => {
@@ -41,29 +46,18 @@ export default function ProductDetail() {
     }
 
     // Pass product info as parameters
-    addCart(userId, title, price, image, id, option).then((res) => {
-      console.log(res);
+    addCart(userId, title, price, image, id, option).then(() => {
+      handleModalOpen();
     });
+  };
+
+  // Go to Cart
+  const goToCart = () => {
+    navigate('/carts');
   };
 
   return (
     <>
-      <Modal
-        keepMounted
-        open={open}
-        onClose={handleModalClose}
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            Login needed
-          </Typography>
-          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-            You need to log in If you would like to use cart
-          </Typography>
-        </Box>
-      </Modal>
       <p className={styles.category}>{category}</p>
       <section className={styles.container}>
         <img className={styles.image} src={image} alt={title} />
@@ -106,6 +100,46 @@ export default function ProductDetail() {
         </div>
       </section>
       <Reviews></Reviews>
+
+      {/* Modal windows */}
+      <Modal
+        keepMounted
+        open={openAlert}
+        onClose={handleModalClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+            Login needed
+          </Typography>
+          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+            You need to log in If you would like to use cart
+          </Typography>
+        </Box>
+      </Modal>
+
+      <Modal
+        keepMounted
+        open={openAfterCart}
+        onClose={handleModalClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <Typography className={styles.modalTitle} variant="h6" component="h2">
+            ✅Your item has been added!
+          </Typography>
+          <div className={styles.buttonContainer}>
+            <Button variant="contained" onClick={handleModalClose}>
+              Continue
+            </Button>
+            <Button variant="contained" onClick={goToCart}>
+              Go to cart
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 }

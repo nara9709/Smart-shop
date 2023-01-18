@@ -8,9 +8,6 @@ export default function MyCart({ user }) {
     }
   }, [user]);
 
-  const { image, title, category, price, option } = useLocation().state;
-  console.log(title, option);
-
   return (
     <div>
       <h1>My cart</h1>

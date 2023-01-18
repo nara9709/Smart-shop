@@ -31,7 +31,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getDatabase(firebaseApp);
 
@@ -136,22 +136,36 @@ export async function addCart(userId, title, price, image, productId, option) {
             ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
             updatedData
           );
+          return;
         }
-        return;
-      } else {
-        // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
-        return set(
-          ref(db, 'users/' + userId + `/carts/${productId}/${option}`),
-          {
-            title,
-            price: parseInt(price),
-            option,
-            image,
-            productId,
-            count: 1,
-          }
-        );
       }
+      // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
+      return set(ref(db, 'users/' + userId + `/carts/${productId}/${option}`), {
+        title,
+        price: parseInt(price),
+        option,
+        image,
+        productId,
+        count: 1,
+      });
     }
   );
+}
+
+// Get cart items
+export async function getCartItems(userId) {
+  const dbRef = ref(getDatabase(firebaseApp));
+
+  return get(child(dbRef, 'users/' + userId + `/carts`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const carts = snapshot.val();
+        return Object.values(carts);
+      } else {
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }

@@ -1,4 +1,4 @@
-@value brandColor from '../../common/colors.css';
+@value brandColor,borderColor from '../../common/colors.css';
 
 a {
   color: black;
@@ -12,7 +12,7 @@ a {
   font-style: normal;
   font-weight: 300;
   text-transform: uppercase;
-  border-bottom: 1px solid #cb997e4c;
+  border-bottom: 1px solid borderColor;
 }
 
 .title_container {
@@ -74,5 +74,8 @@ a {
   .menu_profile {
     padding: 0;
     justify-content: center;
+  }
+  .logo {
+    width: 150px;
   }
 }

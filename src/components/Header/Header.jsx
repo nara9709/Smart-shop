@@ -16,7 +16,7 @@ export default function Header() {
       <Link to="">
         <img
           className={styles.logo}
-          src="https://res.cloudinary.com/nara9709/image/upload/v1674002224/logo_efbz0t.png"
+          src="https://res.cloudinary.com/nara9709/image/upload/v1674020578/SKI_N_BODY_2_b7anul.png"
           alt="logo"
         />
       </Link>

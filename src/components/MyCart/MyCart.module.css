@@ -1,4 +1,4 @@
-@value borderColor, brandColorDark from '../../common/colors.css';
+@value borderColor,brandGreyLight, brandColorDark from '../../common/colors.css';
 
 .carts ul {
   border-bottom: 1px solid borderColor;
@@ -49,6 +49,28 @@
   align-items: center;
 }
 
+.totalContainer {
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemTotal {
+  display: flex;
+  flex-direction: column;
+  background-color: brandGreyLight;
+  font-weight: 300;
+  padding: 1.5em;
+  border-radius: 5px;
+}
+
+.number {
+  margin-top: 0.2em;
+  color: brandColorDark;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 450px) {
   .carts {
     display: flex;
@@ -69,5 +91,14 @@
   .image {
     width: 70px;
     margin: 0;
+  }
+
+  .totalContainer {
+    padding: 1em 0.5em;
+  }
+
+  .itemTotal {
+    padding: 0.9em;
+    margin: 0.5em;
   }
 }

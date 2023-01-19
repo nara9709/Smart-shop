@@ -42,12 +42,11 @@ export default function ProductDetail() {
   const addProductCart = () => {
     // If user is not login, Show modal
     if (!userId) {
-      console.log('Please loging');
       handleModalOpen();
       return;
     }
 
-    const product = { id, title, price, option, quantity: 1 };
+    const product = { id, title, price, option, quantity: 1, image };
 
     // Pass product info as parameters
     addOrUpdateToCart(userId, product).then(() => {
@@ -120,11 +119,16 @@ export default function ProductDetail() {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+          <Typography
+            id="keep-mounted-modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ color: 'red', fontWeight: '600' }}
+          >
             Login needed
           </Typography>
           <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-            You need to log in If you would like to use cart
+            You need to login to add a item to your cart
           </Typography>
         </Box>
       </Modal>
@@ -137,8 +141,13 @@ export default function ProductDetail() {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography className={styles.modalTitle} variant="h6" component="h2">
-            ✅Your item has been added!
+          <Typography
+            className={styles.modalTitle}
+            variant="p"
+            component="h3"
+            sx={{ fontWeight: '300' }}
+          >
+            Your item has been added 🛒
           </Typography>
           <div className={styles.buttonContainer}>
             <Button
@@ -175,6 +184,7 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #dbc7bd',
+  borderRadius: '10px',
   boxShadow: 24,
   p: 4,
 };

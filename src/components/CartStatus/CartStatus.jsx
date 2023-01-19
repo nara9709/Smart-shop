@@ -12,7 +12,9 @@ function CartStatus(props) {
   return (
     <div className={styles.container}>
       <BsCart4 />
-      {products && <p className={styles.badge}>{products.length}</p>}
+      {products && products.length !== 0 && (
+        <p className={styles.badge}>{products.length}</p>
+      )}
     </div>
   );
 }

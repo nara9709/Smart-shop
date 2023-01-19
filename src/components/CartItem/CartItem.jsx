@@ -16,8 +16,8 @@ function CartItem({ product }) {
   // Add quantity from cart
   const addQuantity = (productId) => {
     const quantity = product.quantity + 1;
-    const updatedProducts = { ...product, quantity };
-    addOrUpdateToCart(userId, updatedProducts);
+
+    addOrUpdateToCart(userId, { ...product, quantity });
 
     // Refetch cart items
     queryClient.invalidateQueries(['carts']);
@@ -30,8 +30,8 @@ function CartItem({ product }) {
     }
 
     const quantity = product.quantity - 1;
-    const updatedProducts = { ...product, quantity };
-    addOrUpdateToCart(userId, updatedProducts);
+
+    addOrUpdateToCart(userId, { ...product, quantity });
 
     // Refetch cart items
     queryClient.invalidateQueries(['carts']);

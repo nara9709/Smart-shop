@@ -21,12 +21,11 @@
   scale: 103%;
 }
 .loader_container {
-  width: 100%;
+  width: 65%;
   height: 100vh;
   display: flex;
   justify-content: center;
   position: fixed;
-  background: rgba(243, 242, 233, 0.834);
   z-index: 1;
 }
 

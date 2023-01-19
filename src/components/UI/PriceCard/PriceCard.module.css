@@ -1,0 +1,39 @@
+@value brandGreyLight, brandColorDark from '../../../common/colors.css';
+
+.itemTotal {
+  display: flex;
+  flex-direction: column;
+  background-color: brandGreyLight;
+  font-weight: 300;
+  padding: 1.5em;
+  border-radius: 5px;
+}
+
+.number {
+  margin-top: 0.2em;
+  color: brandColorDark;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 450px) {
+  .carts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carts ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .totalContainer {
+    padding: 1em 0.5em;
+  }
+
+  .itemTotal {
+    padding: 0.9em;
+    margin: 0.5em;
+  }
+}

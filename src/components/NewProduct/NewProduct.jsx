@@ -1,38 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import upload from '../../service/cloudinary';
 import styles from './NewProduct.module.css';
 
-import { addNewProduct } from '../../service/firebase';
-import Button from '../UI/Button/Button';
-import { Box, CircularProgress, Fab, Stack } from '@mui/material';
+import { Box, CircularProgress, Fab } from '@mui/material';
 import { green } from '@mui/material/colors';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
+import useProducts from '../../hooks/useProducts';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [success, setSuccess] = useState(false);
-
   const [isUploading, setIsUploading] = useState(false);
+  const { addProduct } = useProducts();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsUploading(true);
 
+    // Add new product to fireabse
     upload(file)
       .then((url) => {
-        // Add new product to fireabse
-        addNewProduct(product, url) //
-          // Update success value to display a completion message
-          .then((res) => {
-            setSuccess(res);
-            setTimeout(() => {
-              setSuccess(false);
-            }, 5000);
-            setProduct({});
-            setFile(null);
-          });
+        addProduct.mutate(
+          { product, url },
+          {
+            onSuccess: () => {
+              // Update success value to display a completion message
+              setSuccess(true);
+              setTimeout(() => {
+                setSuccess(false);
+              }, 5000);
+              setProduct({});
+              setFile(null);
+            },
+          }
+        );
       })
       .finally(() => setIsUploading(false));
   };

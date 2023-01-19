@@ -1,3 +1,5 @@
+@value borderColor,brandGreyLight, brandColorDark from '../../common/colors.css';
+
 .productInfoContainer {
   display: flex;
   align-items: center;

@@ -11,6 +11,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 import { getCart } from '../../service/firebase';
 import CartItem from '../CartItem/CartItem';
+import PriceCard from '../UI/PriceCard/PriceCard';
 
 export default function MyCart({ user }) {
   const userId = useAuthContext().uid;
@@ -34,6 +35,11 @@ export default function MyCart({ user }) {
     }
   );
 
+  const totalPrice = products
+    ? products.reduce((total, item) => total + item.price * item.quantity, 0)
+    : 0;
+
+  // When page is loading, show loading animation
   if (isLoading)
     return (
       <Box
@@ -80,36 +86,11 @@ export default function MyCart({ user }) {
       </ul>
 
       <div className={styles.totalContainer}>
-        <div className={styles.itemTotal}>
-          <span>Item Total</span>
-          <span className={styles.number}>
-            $
-            {products
-              ? products.reduce(
-                  (total, item) => total + item.price * item.quantity,
-                  0
-                )
-              : 0}
-          </span>
-        </div>
+        <PriceCard text="Item Total" price={totalPrice}></PriceCard>
         <AddCircleOutlineIcon color="primary" />
-        <div className={styles.itemTotal}>
-          <span>Delivery</span>
-          <span className={styles.number}>${products ? `${delivery}` : 0}</span>
-        </div>
+        <PriceCard text="Delivery" price={delivery}></PriceCard>
         <DragHandleIcon color="primary" />
-        <div className={styles.itemTotal}>
-          <span>Total</span>
-          <span className={styles.number}>
-            $
-            {products &&
-              delivery +
-                products.reduce(
-                  (total, item) => total + item.price * item.quantity,
-                  0
-                )}
-          </span>
-        </div>
+        <PriceCard text="Total" price={totalPrice + delivery}></PriceCard>
       </div>
       <Button
         variant="contained"

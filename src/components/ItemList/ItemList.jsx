@@ -1,20 +1,14 @@
 import { Paper } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { getProductList } from '../../service/firebase.js';
+import useProducts from '../../hooks/useProducts.jsx';
 import Item from '../Item/Item.jsx';
 import styles from './ItemList.module.css';
 
 function ItemList() {
-  // Use useQuery to caching product data
+  //Get product data using custom hook
   const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(['products'], () => getProductList(), {
-    staleTime: 50000,
-    refetchOnMount: false,
-  });
+    productsQuery: { isLoading, error, data: products },
+  } = useProducts();
 
   return (
     <section className={styles.itemListContainer}>

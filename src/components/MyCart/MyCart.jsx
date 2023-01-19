@@ -1,24 +1,19 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import styles from './MyCart.module.css';
 import React, { useEffect, useState } from 'react';
 import { redirect } from 'react-router';
 
 import { useAuthContext } from '../context/AuthContext';
-import IconButton from '@mui/material/IconButton';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
-import { Button } from '@mui/material';
-import {
-  addOrUpdateToCart,
-  getCart,
-  removeFromCart,
-} from '../../service/firebase';
+import { Box, Button } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
+
+import { getCart } from '../../service/firebase';
+import CartItem from '../CartItem/CartItem';
 
 export default function MyCart({ user }) {
   const userId = useAuthContext().uid;
-  const queryClient = useQueryClient();
   const [delivery, setDelivery] = useState(10);
 
   useEffect(() => {
@@ -28,7 +23,7 @@ export default function MyCart({ user }) {
   }, [user]);
 
   // Get cart data
-  const { data: products } = useQuery(
+  const { isLoading, data: products } = useQuery(
     ['carts'],
     () => {
       getCart(userId);
@@ -39,47 +34,35 @@ export default function MyCart({ user }) {
     }
   );
 
-  // Add quantity from cart
-  const addQuantity = (productId) => {
-    products.map((product) => {
-      if (product.id === productId) {
-        const quantity = product.quantity + 1;
-        const updatedProducts = { ...product, quantity };
-        addOrUpdateToCart(userId, updatedProducts);
-      }
-      return {};
-    });
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
-
-  // Subtract quantity from cart
-  const subtractQuantity = (productId) => {
-    products.map((product) => {
-      if (product.id === productId) {
-        if (product.quantity === 1) {
-          return removeCartItem(productId);
-        }
-
-        const quantity = product.quantity - 1;
-        const updatedProducts = { ...product, quantity };
-        addOrUpdateToCart(userId, updatedProducts);
-      }
-      return {};
-    });
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
-
-  // Remove item from cart
-  const removeCartItem = (productId) => {
-    removeFromCart(userId, productId);
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
+  if (isLoading)
+    return (
+      <Box
+        fullWidth
+        sx={{
+          display: 'flex',
+          marginTop: '50px',
+        }}
+      >
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          width={200}
+          height={100}
+        />
+        <Box
+          sx={{
+            marginTop: '20px',
+            marginLeft: '20px',
+            width: '900px',
+          }}
+        >
+          <Skeleton animation={false} fullWidth />
+          <Skeleton animation="wave" fullWidth />
+          <Skeleton animation={false} fullWidth />
+        </Box>
+        <Skeleton animation="wave" variant="rectangular" />
+      </Box>
+    );
 
   return (
     <section className={styles.carts}>
@@ -90,46 +73,7 @@ export default function MyCart({ user }) {
           products.map((product) => {
             return (
               <li className={styles.productContainer}>
-                <div className={styles.productInfoContainer}>
-                  <img
-                    className={styles.image}
-                    src={product.image}
-                    alt={product.title}
-                  />
-                  <div className={styles.titleContainer}>
-                    <p className={styles.productTitle}>{product.title}</p>
-                    <p className={styles.productOption}>{product.option}</p>
-                    <p className={styles.productPrice}>${product.price}</p>
-                  </div>
-                </div>
-
-                <div className={styles.buttonContainer}>
-                  <IconButton
-                    color="primary"
-                    onClick={() => {
-                      addQuantity(product.id);
-                    }}
-                  >
-                    <AddCircleOutlineIcon fontSize="large"></AddCircleOutlineIcon>
-                  </IconButton>
-                  {product.quantity}
-                  <IconButton
-                    color="primary"
-                    onClick={() => {
-                      subtractQuantity(product.id);
-                    }}
-                  >
-                    <RemoveCircleOutlineIcon fontSize="large"></RemoveCircleOutlineIcon>
-                  </IconButton>
-                  <IconButton
-                    color="error"
-                    onClick={() => {
-                      removeCartItem(product.id);
-                    }}
-                  >
-                    <DeleteForeverIcon fontSize="medium"></DeleteForeverIcon>
-                  </IconButton>
-                </div>
+                <CartItem product={product} key={product.id}></CartItem>
               </li>
             );
           })}

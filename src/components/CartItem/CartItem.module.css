@@ -1,0 +1,42 @@
+.productInfoContainer {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+.image {
+  width: 180px;
+  border-radius: 5px;
+  margin-right: 1em;
+}
+
+.productOption,
+.productPrice {
+  font-size: 0.9em;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productOption {
+  font-weight: 500;
+  color: brandColorDark;
+}
+
+@media screen and (max-width: 450px) {
+  .titleContainer {
+    margin-left: 1em;
+  }
+
+  .image {
+    width: 70px;
+    margin: 0;
+  }
+
+  .totalContainer {
+    padding: 1em 0.5em;
+  }
+}

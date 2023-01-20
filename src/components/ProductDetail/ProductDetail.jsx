@@ -15,22 +15,34 @@ import {
   Button,
 } from '@mui/material';
 import useCarts from '../../hooks/useCarts.jsx';
+import useProducts from '../../hooks/useProducts.jsx';
 
 export default function ProductDetail() {
-  const userId = useAuthContext().uid;
+  const user = useAuthContext();
   const { image, title, category, price, description, options, id } =
     useLocation().state.product;
   const navigate = useNavigate();
   const [option, setOption] = useState(options[0]);
   const [openAlert, setOpenAlert] = useState(false);
   const [openAfterCart, setOpenAfterCart] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
   const { addOrUpdate } = useCarts();
+  const { removeProduct } = useProducts();
+
+  // Delete product
+  const deleteProduct = () => {
+    removeProduct.mutate({ productId: id });
+    setOpenConfirm(false);
+    navigate('/', {
+      replace: true,
+    });
+  };
 
   // Handling modal window
   const handleModalOpen = () =>
-    userId ? setOpenAfterCart(true) : setOpenAlert(true);
+    user.uid ? setOpenAfterCart(true) : setOpenAlert(true);
   const handleModalClose = () => {
-    userId ? setOpenAfterCart(false) : setOpenAlert(false);
+    user.uid ? setOpenAfterCart(false) : setOpenAlert(false);
   };
 
   // Get option value
@@ -41,7 +53,7 @@ export default function ProductDetail() {
   // Add product to Cart
   const addProductCart = () => {
     // If user is not login, Show modal
-    if (!userId) {
+    if (!user.uid) {
       handleModalOpen();
       return;
     }
@@ -62,6 +74,11 @@ export default function ProductDetail() {
   // Go to Cart
   const goToCart = () => {
     navigate('/carts');
+  };
+
+  // Open Confirm Modal
+  const openConfirmModal = () => {
+    setOpenConfirm(true);
   };
 
   return (
@@ -108,6 +125,21 @@ export default function ProductDetail() {
           >
             Add Cart
           </Button>
+
+          {user.user.isAdmin && (
+            <Button
+              variant="contained"
+              className={styles.button}
+              onClick={openConfirmModal}
+              fullWidth
+              sx={{
+                marginTop: 3,
+              }}
+              color="error"
+            >
+              Delete Product
+            </Button>
+          )}
         </div>
       </section>
       <Reviews></Reviews>
@@ -169,6 +201,53 @@ export default function ProductDetail() {
               }}
             >
               Go to cart
+            </Button>
+          </div>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={openConfirm}
+        keepMounted
+        onClose={() => {
+          setOpenConfirm(false);
+        }}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <Typography
+            className={styles.modalTitle}
+            variant="p"
+            component="h3"
+            sx={{ fontWeight: '300' }}
+          >
+            Are you sure to delete this product?
+          </Typography>
+          <Typography>Product name: {title}</Typography>
+          <div className={styles.buttonContainer}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                deleteProduct();
+              }}
+              sx={{
+                marginTop: 3,
+              }}
+              color="error"
+            >
+              Delete
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setOpenConfirm(false);
+              }}
+              sx={{
+                marginTop: 3,
+              }}
+            >
+              Cancel
             </Button>
           </div>
         </Box>

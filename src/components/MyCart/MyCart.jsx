@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import styles from './MyCart.module.css';
 import React, { useEffect, useState } from 'react';
 import { redirect } from 'react-router';
@@ -9,13 +8,11 @@ import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { Box, Button } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import { getCart } from '../../service/firebase';
 import CartItem from '../CartItem/CartItem';
 import PriceCard from '../UI/PriceCard/PriceCard';
 import useCarts from '../../hooks/useCarts';
 
 export default function MyCart({ user }) {
-  const userId = useAuthContext().uid;
   const [delivery, setDelivery] = useState(10);
 
   useEffect(() => {

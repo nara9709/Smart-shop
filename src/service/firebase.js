@@ -131,6 +131,11 @@ export async function removeFromCart(userId, productId) {
   return remove(ref(db, `${userId}/carts/${productId}`));
 }
 
+// Remove product from product list
+export async function removeFromProductList(productId) {
+  return remove(ref(db, `products/${productId}`));
+}
+
 // export async function addCart(userId, title, price, image, productId, option) {
 //   const dbRef = ref(getDatabase(firebaseApp));
 

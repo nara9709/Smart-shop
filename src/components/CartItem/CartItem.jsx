@@ -5,45 +5,10 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton';
-import { addOrUpdateToCart, removeFromCart } from '../../service/firebase';
-import { useQueryClient } from '@tanstack/react-query';
-import { useAuthContext } from '../context/AuthContext';
+import useCarts from '../../hooks/useCarts';
 
 function CartItem({ product }) {
-  const queryClient = useQueryClient();
-  const userId = useAuthContext().uid;
-
-  // Add quantity from cart
-  const addQuantity = (productId) => {
-    const quantity = product.quantity + 1;
-
-    addOrUpdateToCart(userId, { ...product, quantity });
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
-
-  // Subtract quantity from cart
-  const subtractQuantity = (productId) => {
-    if (product.quantity === 1) {
-      return removeCartItem(productId);
-    }
-
-    const quantity = product.quantity - 1;
-
-    addOrUpdateToCart(userId, { ...product, quantity });
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
-
-  // Remove item from cart
-  const removeCartItem = (productId) => {
-    removeFromCart(userId, productId);
-
-    // Refetch cart items
-    queryClient.invalidateQueries(['carts']);
-  };
+  const { addOrUpdate, removeCartItem } = useCarts();
 
   return (
     <>
@@ -60,7 +25,10 @@ function CartItem({ product }) {
         <IconButton
           color="primary"
           onClick={() => {
-            addQuantity(product.id);
+            addOrUpdate.mutate({
+              product: product,
+              quantity: product.quantity + 1,
+            });
           }}
         >
           <AddCircleOutlineIcon fontSize="large"></AddCircleOutlineIcon>
@@ -69,7 +37,10 @@ function CartItem({ product }) {
         <IconButton
           color="primary"
           onClick={() => {
-            subtractQuantity(product.id);
+            addOrUpdate.mutate({
+              product: product,
+              quantity: product.quantity === 1 ? 1 : product.quantity - 1,
+            });
           }}
         >
           <RemoveCircleOutlineIcon fontSize="large"></RemoveCircleOutlineIcon>
@@ -77,7 +48,7 @@ function CartItem({ product }) {
         <IconButton
           color="error"
           onClick={() => {
-            removeCartItem(product.id);
+            removeCartItem.mutate({ productId: product.id });
           }}
         >
           <DeleteForeverIcon fontSize="medium"></DeleteForeverIcon>

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router';
 import Reviews from '../Reviews/Reviews.jsx';
 import styles from './ProductDetail.module.css';
 import { useAuthContext } from '../context/AuthContext';
-import { addOrUpdateToCart } from '../../service/firebase.js';
+
 import {
   Box,
   FormControl,
@@ -14,7 +14,7 @@ import {
   Typography,
   Button,
 } from '@mui/material';
-import { useQueryClient } from '@tanstack/react-query';
+import useCarts from '../../hooks/useCarts.jsx';
 
 export default function ProductDetail() {
   const userId = useAuthContext().uid;
@@ -24,7 +24,7 @@ export default function ProductDetail() {
   const [option, setOption] = useState(options[0]);
   const [openAlert, setOpenAlert] = useState(false);
   const [openAfterCart, setOpenAfterCart] = useState(false);
-  const queryClient = useQueryClient();
+  const { addOrUpdate } = useCarts();
 
   // Handling modal window
   const handleModalOpen = () =>
@@ -49,12 +49,14 @@ export default function ProductDetail() {
     const product = { id, title, price, option, quantity: 1, image };
 
     // Pass product info as parameters
-    addOrUpdateToCart(userId, product).then(() => {
-      handleModalOpen();
-    });
-
-    // Update cart bedge count
-    queryClient.invalidateQueries({ queryKey: ['carts'] });
+    addOrUpdate.mutate(
+      { product: product, quantity: product.quantity },
+      {
+        onSuccess: () => {
+          handleModalOpen();
+        },
+      }
+    );
   };
 
   // Go to Cart

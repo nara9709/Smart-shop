@@ -1,19 +1,19 @@
 import React from 'react';
 import { BsCart4 } from 'react-icons/bs';
-import { getCart } from '../../service/firebase';
-import { useQuery } from '@tanstack/react-query';
-import { useAuthContext } from '../context/AuthContext';
+import useCarts from '../../hooks/useCarts';
+
 import styles from './CartStatus.module.css';
 
-function CartStatus(props) {
-  const userId = useAuthContext().uid;
-  const { data: products } = useQuery(['carts'], () => getCart(userId));
+function CartStatus() {
+  const {
+    cartsQuery: { data: carts },
+  } = useCarts();
 
   return (
     <div className={styles.container}>
       <BsCart4 />
-      {products && products.length !== 0 && (
-        <p className={styles.badge}>{products.length}</p>
+      {carts && carts.length !== 0 && (
+        <p className={styles.badge}>{carts.length}</p>
       )}
     </div>
   );

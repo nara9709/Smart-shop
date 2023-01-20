@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { Paper, Skeleton, Stack } from '@mui/material';
 import React from 'react';
 import useProducts from '../../hooks/useProducts.jsx';
 import Item from '../Item/Item.jsx';
@@ -13,9 +13,20 @@ function ItemList() {
   return (
     <section className={styles.itemListContainer}>
       {isLoading && (
-        <div className={styles.loader_container}>
-          <div className={styles.spinner}></div>
-        </div>
+        <Stack spacing={1}>
+          <Skeleton
+            variant="rectangular"
+            width={300}
+            height={300}
+            animation="wave"
+          />
+          <Skeleton
+            variant="rounded"
+            width={210}
+            height={60}
+            animation="wave"
+          />
+        </Stack>
       )}
       {error && <p>{error}</p>}
       <ul className={styles.itemList}>

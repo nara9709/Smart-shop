@@ -12,7 +12,7 @@ function Item({ product, product: { id, image, title, category, price } }) {
     });
   };
   return (
-    <div div onClick={goToDetail}>
+    <div onClick={goToDetail}>
       <img className={styles.image} src={image} alt={title} />
       <div className={styles.infoBox}>
         <span className={styles.titleContainer}>

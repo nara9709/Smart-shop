@@ -12,6 +12,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { getCart } from '../../service/firebase';
 import CartItem from '../CartItem/CartItem';
 import PriceCard from '../UI/PriceCard/PriceCard';
+import useCarts from '../../hooks/useCarts';
 
 export default function MyCart({ user }) {
   const userId = useAuthContext().uid;
@@ -24,16 +25,9 @@ export default function MyCart({ user }) {
   }, [user]);
 
   // Get cart data
-  const { isLoading, data: products } = useQuery(
-    ['carts'],
-    () => {
-      getCart(userId);
-    },
-    {
-      staleTime: 500000,
-      refetchOnMount: false,
-    }
-  );
+  const {
+    cartsQuery: { isLoading, data: products },
+  } = useCarts();
 
   const totalPrice = products
     ? products.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -43,7 +37,6 @@ export default function MyCart({ user }) {
   if (isLoading)
     return (
       <Box
-        fullWidth
         sx={{
           display: 'flex',
           marginTop: '50px',
@@ -62,9 +55,9 @@ export default function MyCart({ user }) {
             width: '900px',
           }}
         >
-          <Skeleton animation={false} fullWidth />
-          <Skeleton animation="wave" fullWidth />
-          <Skeleton animation={false} fullWidth />
+          <Skeleton animation={false} />
+          <Skeleton animation="wave" />
+          <Skeleton animation={false} />
         </Box>
         <Skeleton animation="wave" variant="rectangular" />
       </Box>
@@ -78,8 +71,8 @@ export default function MyCart({ user }) {
         {products &&
           products.map((product) => {
             return (
-              <li className={styles.productContainer}>
-                <CartItem product={product} key={product.id}></CartItem>
+              <li className={styles.productContainer} key={product.id}>
+                <CartItem product={product ? product : null}></CartItem>
               </li>
             );
           })}

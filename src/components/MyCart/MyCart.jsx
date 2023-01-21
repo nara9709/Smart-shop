@@ -2,7 +2,6 @@ import styles from './MyCart.module.css';
 import React, { useEffect, useState } from 'react';
 import { redirect } from 'react-router';
 
-import { useAuthContext } from '../context/AuthContext';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { Box, Button } from '@mui/material';
@@ -14,7 +13,6 @@ import useCarts from '../../hooks/useCarts';
 
 export default function MyCart({ user }) {
   const [delivery, setDelivery] = useState(10);
-
   useEffect(() => {
     if (!user) {
       redirect('/');

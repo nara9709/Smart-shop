@@ -83,11 +83,11 @@ export default function ProductDetail() {
 
   return (
     <>
-      <p className={styles.category}>{category}</p>
       <section className={styles.container}>
         <img className={styles.image} src={image} alt={title} />
         <div className={styles.product_info_container}>
           <div className={styles.titleContainer}>
+            <p className={styles.category}>{category}</p>
             <h3>{title}</h3>
             <h4>${price}</h4>
           </div>

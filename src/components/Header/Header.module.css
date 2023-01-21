@@ -5,14 +5,19 @@ a {
   text-decoration: none;
 }
 .nav {
-  height: 6rem;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: fenwick, sans-serif;
   font-style: normal;
   font-weight: 300;
   text-transform: uppercase;
-  border-bottom: 1px solid borderColor;
+}
+
+.leftNav {
+  display: flex;
+  margin-left: 80px;
 }
 
 .title_container {
@@ -38,10 +43,9 @@ a {
   opacity: 50%;
   cursor: pointer;
 }
-.logo {
-  padding-top: 0.2em;
-  width: 100px;
-  height: 100%;
+
+.textLogo {
+  font-size: 1.3em;
 }
 
 .icon_cart,
@@ -62,6 +66,12 @@ a {
     display: inline;
   }
 
+  .leftNav {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
   .title_container {
     justify-content: center;
   }
@@ -76,9 +86,5 @@ a {
   .menu_profile {
     padding: 0;
     justify-content: center;
-  }
-  .logo {
-    padding: 1em;
-    width: 150px;
   }
 }

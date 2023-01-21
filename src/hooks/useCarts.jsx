@@ -26,7 +26,12 @@ function useCarts(props) {
       addOrUpdateToCart(userId, { ...product, quantity });
     },
     // Refetch cart items
-    { onSuccess: () => queryClient.invalidateQueries(['carts', userId]) }
+    {
+      onSuccess: () => queryClient.invalidateQueries(['carts', userId]),
+      onError: (error) => {
+        console.log(error);
+      },
+    }
   );
 
   // Remove cart item from cart

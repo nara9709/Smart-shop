@@ -12,14 +12,15 @@ function Item({ product, product: { id, image, title, category, price } }) {
     });
   };
   return (
-    <div onClick={goToDetail}>
+    <div className={styles.itemContainer} onClick={goToDetail}>
       <img className={styles.image} src={image} alt={title} />
       <div className={styles.infoBox}>
         <span className={styles.titleContainer}>
-          <p> {title}</p>
           <p className={styles.category}>{category}</p>
+          <p className={styles.title}> {title}</p>
         </span>
         <span className={styles.price}> ${price}</span>
+        <p className={styles.new}>NEW</p>
       </div>
     </div>
   );

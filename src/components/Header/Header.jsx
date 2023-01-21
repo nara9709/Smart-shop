@@ -14,49 +14,48 @@ export default function Header() {
 
   return (
     <nav className={styles.nav}>
-      <Link to="">
-        <img
-          className={styles.logo}
-          src="https://res.cloudinary.com/nara9709/image/upload/v1674021098/SKI_N_BODY_3_lazf22.png"
-          alt="logo"
-        />
-      </Link>
-      <ul className={styles.menu}>
-        <Link to="/products">
-          <li>Products</li>
-        </Link>
-        {user && (
-          <Link to="/carts">
-            <li className={styles.icon_cart}>
-              <CartStatus></CartStatus>
-            </li>
-          </Link>
-        )}
-        {user && user.isAdmin && (
-          <Link to="products/new">
-            <li className={styles.icon_edit}>
-              <MdOutlineModeEdit />
-            </li>
-          </Link>
-        )}
-        {user && <User user={user} />}
+      <div className={styles.leftNav}>
         <Link to="">
-          {!user && (
-            <li>
-              <Button onClick={login} size="medium" variant="contained">
-                Login
-              </Button>
-            </li>
+          <p className={styles.textLogo}>SKI N BODY</p>
+        </Link>
+        <ul className={styles.menu}>
+          <Link to="/products">
+            <li>Products</li>
+          </Link>
+          {user && (
+            <Link to="/carts">
+              <li className={styles.icon_cart}>
+                <CartStatus></CartStatus>
+              </li>
+            </Link>
+          )}
+          {user && user.isAdmin && (
+            <Link to="products/new">
+              <li className={styles.icon_edit}>
+                <MdOutlineModeEdit />
+              </li>
+            </Link>
           )}
           {user && (
             <li>
-              <Button onClick={logout} size="medium" variant="contained">
-                Logout
-              </Button>
+              <User user={user} />
             </li>
           )}
-        </Link>
-      </ul>
+        </ul>
+      </div>
+
+      <Link to="">
+        {!user && (
+          <Button onClick={login} size="medium" variant="outlined">
+            Login
+          </Button>
+        )}
+        {user && (
+          <Button onClick={logout} size="medium" variant="outlined">
+            Logout
+          </Button>
+        )}
+      </Link>
     </nav>
   );
 }

@@ -33,10 +33,8 @@ function ItemList() {
         {products &&
           Object.keys(products).map((item) => {
             return (
-              <li key={item}>
-                <Paper className={styles.item} elevation={2}>
-                  <Item product={products[item]} />
-                </Paper>
+              <li className={styles.item} key={item}>
+                <Item product={products[item]} />
               </li>
             );
           })}

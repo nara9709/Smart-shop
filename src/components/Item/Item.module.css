@@ -1,34 +1,43 @@
-@value brandGrey from '../../common/colors.css';
+@value brandGrey, brandColorDark from '../../common/colors.css';
 
+.itemContainer {
+  width: 250px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-bottom: 2em;
+}
 .image {
   width: 100%;
-  height: 350px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  height: 300px;
   margin: 0;
   padding: 0;
   display: block;
+  object-fit: cover;
 }
 
 .infoBox {
   font-weight: 300;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 0;
-  padding: 0.5em 1em;
+  padding-top: 0.5em;
   font-size: 0.9em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: start;
 }
 
 .price {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .category {
   color: brandGrey;
+  font-weight: 200;
+  font-size: 0.9em;
+}
+
+.title {
+  font-weight: 600;
 }
 
 .titleContainer {
@@ -36,5 +45,21 @@
 }
 
 .titleContainer p {
-  margin: 0.3em;
+  margin: 0;
+  margin-bottom: 0.3em;
+}
+
+.new {
+  width: 33px;
+  background-color: brandColorDark;
+  color: white;
+  font-weight: 300;
+  padding: 0.1em 0.5em;
+}
+
+@media screen and (max-width: 480px) {
+  .image {
+    width: 150px;
+    height: 250px;
+  }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CartItem.module.css';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton';
@@ -17,34 +17,42 @@ function CartItem({ product }) {
         <div className={styles.titleContainer}>
           <p className={styles.productTitle}>{product.title}</p>
           <p className={styles.productOption}>{product.option}</p>
-          <p className={styles.productPrice}>${product.price}</p>
         </div>
       </div>
 
+      <div className={styles.productPrice}>
+        <em>${product.price}</em>
+      </div>
+
       <div className={styles.buttonContainer}>
-        <IconButton
-          color="primary"
-          onClick={() => {
-            addOrUpdate.mutate({
-              product: product,
-              quantity: product.quantity + 1,
-            });
-          }}
-        >
-          <AddCircleOutlineIcon fontSize="large"></AddCircleOutlineIcon>
-        </IconButton>
-        {product.quantity}
-        <IconButton
-          color="primary"
-          onClick={() => {
-            addOrUpdate.mutate({
-              product: product,
-              quantity: product.quantity === 1 ? 1 : product.quantity - 1,
-            });
-          }}
-        >
-          <RemoveCircleOutlineIcon fontSize="large"></RemoveCircleOutlineIcon>
-        </IconButton>
+        <div>
+          <IconButton
+            color="default"
+            onClick={() => {
+              addOrUpdate.mutate({
+                product: product,
+                quantity: product.quantity + 1,
+              });
+            }}
+          >
+            <AddIcon fontSize="medium"></AddIcon>
+          </IconButton>
+          <em> {product.quantity}</em>
+          <IconButton
+            color="default"
+            onClick={() => {
+              addOrUpdate.mutate({
+                product: product,
+                quantity: product.quantity === 1 ? 1 : product.quantity - 1,
+              });
+            }}
+          >
+            <RemoveIcon fontSize="medium"></RemoveIcon>
+          </IconButton>
+        </div>
+      </div>
+      <div className={styles.subtotal}>
+        <em>${product.price * product.quantity}</em>
         <IconButton
           color="error"
           onClick={() => {

@@ -36,11 +36,7 @@ export default function Header() {
               </li>
             </Link>
           )}
-          {user && (
-            <li>
-              <User user={user} />
-            </li>
-          )}
+          {user && <User user={user} />}
         </ul>
       </div>
 

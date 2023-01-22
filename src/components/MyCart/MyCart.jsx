@@ -10,9 +10,9 @@ import Skeleton from '@mui/material/Skeleton';
 import CartItem from '../CartItem/CartItem';
 import PriceCard from '../UI/PriceCard/PriceCard';
 import useCarts from '../../hooks/useCarts';
+import { style } from '@mui/system';
 
 export default function MyCart({ user }) {
-  const [delivery, setDelivery] = useState(10);
   useEffect(() => {
     if (!user) {
       redirect('/');
@@ -60,33 +60,56 @@ export default function MyCart({ user }) {
 
   return (
     <section className={styles.carts}>
-      <p className={styles.title}> My cart</p>
-      <ul>
-        {products && products.length === 0 && <p>No item in your cart😢</p>}
-        {products &&
-          products.map((product) => {
-            return (
-              <li className={styles.productContainer} key={product.id}>
-                <CartItem product={product ? product : null}></CartItem>
-              </li>
-            );
-          })}
-      </ul>
-
-      <div className={styles.totalContainer}>
-        <PriceCard text="Item Total" price={totalPrice}></PriceCard>
-        <AddCircleOutlineIcon color="primary" />
-        <PriceCard text="Delivery" price={delivery}></PriceCard>
-        <DragHandleIcon color="primary" />
-        <PriceCard text="Total" price={totalPrice + delivery}></PriceCard>
+      <header>
+        <p className={styles.title}> My cart</p>
+      </header>
+      <div className={styles.container}>
+        {' '}
+        <div className={styles.cartContainer}>
+          <div className={styles.infoList}>
+            <em className={styles.product}>Product</em>
+            <em className={styles.price}>Price</em>
+            <em className={styles.quantity}>Quantity</em>
+            <em className={styles.subtotal}>Subtotal</em>
+          </div>
+          <ul>
+            {products && products.length === 0 && <p>No item in your cart😢</p>}
+            {products &&
+              products.map((product) => {
+                return (
+                  <li className={styles.productContainer} key={product.id}>
+                    <CartItem product={product ? product : null}></CartItem>
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+        <div className={styles.totalContainer}>
+          <div className={styles.summaryTop}>
+            <h4>Order Summary</h4>
+            <ul>
+              {products &&
+                products.map((product) => {
+                  return (
+                    <li>
+                      <em>{product.title}</em>
+                      <em className={styles.summaryPrice}>
+                        ${product.price * product.quantity}
+                      </em>
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{ marginBottom: 1, marginTop: 1 }}
+          >
+            PROCEED TO CHECKOUT
+          </Button>
+        </div>
       </div>
-      <Button
-        variant="contained"
-        fullWidth
-        sx={{ marginBottom: 10, marginTop: 5 }}
-      >
-        Order
-      </Button>
     </section>
   );
 }

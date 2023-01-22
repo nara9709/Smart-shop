@@ -113,7 +113,6 @@ export default function ProductDetail() {
               })}
             </Select>
           </FormControl>
-
           <Button
             variant="contained"
             className={styles.button}
@@ -125,8 +124,7 @@ export default function ProductDetail() {
           >
             Add Cart
           </Button>
-
-          {user.user.isAdmin && (
+          {user.uid !== null && user.user.isAdmin ? (
             <Button
               variant="contained"
               className={styles.button}
@@ -139,7 +137,26 @@ export default function ProductDetail() {
             >
               Delete Product
             </Button>
-          )}
+          ) : null}
+
+          {/* {user && (
+            <div>
+              {user.user.isAdmin && (
+                <Button
+                  variant="contained"
+                  className={styles.button}
+                  onClick={openConfirmModal}
+                  fullWidth
+                  sx={{
+                    marginTop: 3,
+                  }}
+                  color="error"
+                >
+                  Delete Product
+                </Button>
+              )}
+            </div>
+          )} */}
         </div>
       </section>
       <Reviews></Reviews>

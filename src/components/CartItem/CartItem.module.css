@@ -7,10 +7,20 @@
   font-size: 0.9em;
 }
 
+.titleContainer {
+  width: 320px;
+}
+
+.productTitle {
+  font-weight: 500;
+}
+
 .image {
-  width: 180px;
+  width: 120px;
+  height: 150px;
   border-radius: 5px;
   margin-right: 1em;
+  object-fit: cover;
 }
 
 .productOption,
@@ -18,27 +28,63 @@
   font-size: 0.9em;
 }
 
+.productPrice {
+  width: 120px;
+  font-weight: 500;
+}
+
 .buttonContainer {
+  width: 160px;
+}
+
+.buttonContainer div {
+  width: 70%;
+  border: 2px solid borderColor;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .productOption {
   font-weight: 500;
   color: brandColorDark;
 }
 
+.subtotal {
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 @media screen and (max-width: 450px) {
+  .productInfoContainer {
+    width: 130px;
+  }
+
   .titleContainer {
-    margin-left: 1em;
+    margin: 0em 1em 0em 1em;
   }
 
   .image {
     width: 70px;
+    height: 100px;
     margin: 0;
   }
 
   .totalContainer {
     padding: 1em 0.5em;
+  }
+
+  .buttonContainer {
+    margin-right: 0.5em;
+  }
+
+  .productPrice {
+    width: 90px;
+    margin: 0em 1em 0em 1em;
+  }
+
+  .buttonContainer div {
+    padding: 0 0.5em;
   }
 }

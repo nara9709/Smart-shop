@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import 'react-slideshow-image/dist/styles.css';
-import { Slide } from 'react-slideshow-image';
 import styles from './Home.module.css';
 import ItemList from '../ItemList/ItemList';
 import useFade from '../../hooks/useFade';
@@ -18,13 +17,6 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, []);
-
-  const images = [
-    'https://res.cloudinary.com/nara9709/image/upload/v1673757107/2_purapl.png',
-    'https://res.cloudinary.com/nara9709/image/upload/v1673757107/1_kwkkf5.png',
-    'https://res.cloudinary.com/nara9709/image/upload/v1673757107/4_l3gksb.png',
-    'https://res.cloudinary.com/nara9709/image/upload/v1673757107/3_nmpecb.png',
-  ];
 
   return (
     <>
@@ -89,22 +81,7 @@ export default function Home() {
           )}
         </section>
       )}
-      <div className={styles.slideContainer}>
-        <Slide duration={3000} arrows={false}>
-          <div className={styles.each_slide_effect}>
-            <div style={{ backgroundImage: `url(${images[0]})` }}></div>
-          </div>
-          <div className={styles.each_slide_effect}>
-            <div style={{ backgroundImage: `url(${images[1]})` }}></div>
-          </div>
-          <div className={styles.each_slide_effect}>
-            <div style={{ backgroundImage: `url(${images[2]})` }}></div>
-          </div>
-          <div className={styles.each_slide_effect}>
-            <div style={{ backgroundImage: `url(${images[3]})` }}></div>
-          </div>
-        </Slide>
-      </div>
+
       <ItemList></ItemList>
     </>
   );

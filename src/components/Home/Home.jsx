@@ -4,11 +4,13 @@ import styles from './Home.module.css';
 import ItemList from '../ItemList/ItemList';
 import useFade from '../../hooks/useFade';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router';
+import Bounce from '../UI/Bounce';
 
 export default function Home() {
   const [isVisible, setVisible, fadeProps] = useFade();
   const [textShow, setTextShow] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setVisible(true);
     const timeout = setTimeout(() => {
@@ -76,9 +78,20 @@ export default function Home() {
                   Organic Care Product
                 </p>
               </div>
-              <Button variant="contained">Shop Now</Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  navigate('/products');
+                }}
+              >
+                Shop Now
+              </Button>
             </div>
           )}
+          <Bounce className={styles.scrollDownContainer}>
+            <h1 className={styles.scrollDown}>Scroll Dowm </h1>
+            <p>l</p>
+          </Bounce>
         </section>
       )}
 

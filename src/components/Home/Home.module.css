@@ -1,6 +1,7 @@
 .mainContainer {
   position: relative;
   display: flex;
+  font-family: Raleway, sans-serif;
 }
 
 .sideBar {
@@ -62,7 +63,7 @@
 
 .scrollDownContainer {
   position: absolute;
-  bottom: 140px;
+  bottom: 100px;
   left: 300px;
 }
 
@@ -83,6 +84,164 @@
   margin-right: 0.8em;
 }
 
+/* Style section */
+
+.styleContainer {
+  position: relative;
+  font-family: Raleway, sans-serif;
+}
+
+.productNum {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  text-align: start;
+}
+
+.productNum p {
+  font-weight: 700;
+  font-size: 3em;
+  margin: 0;
+}
+
+.productNum em {
+  text-align: start;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.styleItems ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.styleItems li {
+  width: 40%;
+}
+
+.title {
+  position: absolute;
+  text-shadow: rgb(0 0 0 / 24%) 0 0.25vw 0.6667vw;
+  font-weight: 900;
+  font-size: 3em;
+  color: white;
+  text-transform: uppercase;
+}
+
+.desBox {
+  text-align: start;
+  position: absolute;
+}
+
+.desBox .topLine {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.desBox .bottomLine {
+  font-weight: 800;
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+.desBox .shopLine {
+  height: 1px;
+  width: 30px;
+  background-color: black;
+  margin-right: 10px;
+}
+
+.desBox .shopNow {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 0.9em;
+}
+
+.item_soap {
+  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1674448245/sincerely-media-gKqUuChJ83g-unsplash_-_%ED%8E%B8%EC%A7%91%ED%95%A8_h7tbmj.png);
+  background-size: cover;
+  width: 350px;
+  height: 450px;
+  margin-top: 20em;
+  position: relative;
+}
+
+.item_soap .title {
+  left: -175px;
+  top: 200px;
+  transform: rotate(-90deg);
+}
+
+.item_soap .desBox {
+  right: -50px;
+  bottom: 90px;
+}
+
+.item_serum {
+  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1674448239/mathilde-langevin-FDRaYqiTY1k-unsplash_-_%ED%8E%B8%EC%A7%91%ED%95%A8_q4qc7j.png);
+  background-size: cover;
+  width: 350px;
+  height: 450px;
+  margin-top: 5em;
+  margin-left: 10em;
+  position: relative;
+}
+
+.item_serum .desBox {
+  left: -30px;
+  bottom: 70px;
+}
+
+.item_serum .title {
+  bottom: -80px;
+  left: 190px;
+}
+
+.item_cream {
+  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1674448256/cheyenne-doig-dPs0DEGrM9A-unsplash_trunnt.jpg);
+  background-size: cover;
+  width: 350px;
+  height: 450px;
+  margin-top: 5em;
+  margin-left: 5em;
+  margin-bottom: 6em;
+  position: relative;
+}
+
+.item_cream .title {
+  bottom: 20px;
+  top: -40px;
+  right: -50px;
+}
+
+.item_cream .desBox {
+  bottom: -40px;
+  right: -50px;
+}
+
+.item_lip {
+  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1674448243/morgan-alley-deq9ni4EGY8-unsplash_-_%ED%8E%B8%EC%A7%91%ED%95%A8_illlzs.png);
+  background-size: cover;
+  width: 350px;
+  height: 450px;
+  margin-left: 5em;
+  margin-bottom: 8em;
+  position: relative;
+}
+
+.item_lip .title {
+  bottom: 0;
+  right: -50px;
+}
+.item_lip .desBox {
+  top: 30px;
+  left: 50px;
+}
+
 @media screen and (max-width: 1000px) {
   .mainImageContainer {
     height: 600px;
@@ -100,12 +259,16 @@
 }
 
 @media screen and (max-width: 480px) {
+  .mainContainer {
+    justify-content: space-between;
+  }
+
   .mainImageContainer {
     display: flex;
     height: 844px;
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 80%;
+    width: 90%;
   }
 
   .mainTextContainer {
@@ -124,6 +287,15 @@
     height: 100%;
   }
 
+  .productNum {
+    display: none;
+  }
+
+  .sideBar {
+    width: 50px;
+    padding: 0.5em;
+  }
+
   .slideContainer {
     zoom: 50%;
   }
@@ -138,5 +310,62 @@
 
   .subText {
     font-size: 2em;
+  }
+
+  .styleItems ul {
+    flex-direction: column;
+  }
+
+  .styleItems li {
+    width: 100%;
+  }
+
+  .item_soap,
+  .item_serum,
+  .item_lip,
+  .item_cream {
+    margin: 0;
+  }
+
+  .item_soap .title {
+    left: -100px;
+    font-size: 2.5em;
+  }
+
+  .item_soap .desBox {
+    left: 100px;
+    top: 100px;
+  }
+
+  .item_serum .title {
+    top: 0;
+    font-size: 2.5em;
+  }
+
+  .item_serum .desBox {
+    left: 200px;
+    top: 100px;
+  }
+
+  .item_cream .title {
+    top: 0;
+    left: -100px;
+    font-size: 2.5em;
+  }
+
+  .item_cream .desBox {
+    left: 10px;
+    bottom: 40px;
+  }
+
+  .item_lip .title {
+    bottom: 0;
+    left: -150px;
+    font-size: 2.5em;
+  }
+
+  .item_lip .desBox {
+    left: 20px;
+    bottom: 40px;
   }
 }

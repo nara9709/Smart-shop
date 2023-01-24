@@ -5,7 +5,6 @@
   background-size: cover;
   background-position: center center;
   height: 300px;
-
   margin-top: 2em;
 }
 
@@ -20,7 +19,7 @@
   .section {
     margin: auto;
     width: 90%;
-    max-width: 480px;
+    max-width: 400px;
   }
   .slideContainer {
     width: 100%;

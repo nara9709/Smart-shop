@@ -7,7 +7,7 @@ export default function AllProducts() {
   return (
     <>
       <Banner></Banner>
-      <ItemList></ItemList>;
+      <ItemList></ItemList>
     </>
   );
 }

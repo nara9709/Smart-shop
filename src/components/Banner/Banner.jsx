@@ -10,7 +10,7 @@ function Banner() {
     'https://res.cloudinary.com/nara9709/image/upload/v1673757107/3_nmpecb.png',
   ];
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.slideContainer}>
         <Slide duration={3000} arrows={false}>
           <div className={styles.each_slide_effect}>

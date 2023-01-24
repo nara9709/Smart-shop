@@ -5,6 +5,7 @@
   background-size: cover;
   background-position: center center;
   height: 300px;
+
   margin-top: 2em;
 }
 
@@ -16,7 +17,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .section {
+    margin: auto;
+    width: 90%;
+    max-width: 480px;
+  }
   .slideContainer {
+    width: 100%;
     zoom: 50%;
   }
   .each-slide-effect > div {

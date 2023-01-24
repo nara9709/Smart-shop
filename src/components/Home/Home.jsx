@@ -6,7 +6,9 @@ import useFade from '../../hooks/useFade';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Bounce from '../UI/Bounce';
-import { style } from '@mui/system';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import WalletIcon from '@mui/icons-material/Wallet';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -177,6 +179,37 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.introductionList}>
+              <ul>
+                <li className={styles.introItem}>
+                  <LocalShippingIcon sx={{ fontSize: 50 }}></LocalShippingIcon>
+                  <h2>Free Shipping</h2>
+                  <span></span>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Possimus.
+                  </p>
+                </li>
+                <li className={styles.introItem}>
+                  <PhoneEnabledIcon sx={{ fontSize: 50 }}></PhoneEnabledIcon>
+                  <h2>24/7 Customer Serivce</h2>
+                  <span></span>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Possimus.
+                  </p>
+                </li>
+                <li className={styles.introItem}>
+                  <WalletIcon sx={{ fontSize: 50 }}></WalletIcon>
+                  <h2>Money Back Guarantee</h2>
+                  <span></span>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Possimus.
+                  </p>
                 </li>
               </ul>
             </div>

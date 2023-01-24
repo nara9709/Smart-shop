@@ -1,13 +1,13 @@
 html {
-  max-width: 1600px;
   text-align: center;
   margin: auto;
 }
 
 body {
   margin: 0;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -29,6 +29,9 @@ li {
 }
 
 section {
+  max-width: 1600px;
+  margin: 0;
+  padding: 0 3em 0 3em;
   max-width: 1500px;
 }
 
@@ -46,6 +49,10 @@ input {
   body {
     padding-left: 0rem;
     padding-right: 0;
+  }
+
+  section {
+    padding: 0;
   }
 }
 

@@ -4,6 +4,7 @@ import { AuthContextProvider } from './components/context/AuthContext';
 import Header from './components/Header/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './common/theme';
+import Footer from './components/Footer/Footer';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <Header />
           <Outlet />
+          <Footer />
         </ThemeProvider>
       </AuthContextProvider>
     </QueryClientProvider>

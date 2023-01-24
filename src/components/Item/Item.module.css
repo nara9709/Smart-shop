@@ -38,6 +38,9 @@
 
 .title {
   font-weight: 600;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .titleContainer {
@@ -58,6 +61,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .itemContainer {
+    width: 100%;
+  }
   .image {
     width: 150px;
     height: 250px;

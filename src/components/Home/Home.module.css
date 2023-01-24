@@ -143,7 +143,7 @@
 
 .desBox .bottomLine {
   font-weight: 800;
-  font-size: 1.2em;
+  font-size: 2em;
   margin-top: 0;
 }
 
@@ -206,8 +206,7 @@
   background-size: cover;
   width: 350px;
   height: 450px;
-  margin-top: 5em;
-  margin-left: 5em;
+  margin-top: 15em;
   margin-bottom: 6em;
   position: relative;
 }
@@ -219,8 +218,8 @@
 }
 
 .item_cream .desBox {
-  bottom: -40px;
-  right: -50px;
+  bottom: -66px;
+  right: -13px;
 }
 
 .item_lip {
@@ -240,6 +239,33 @@
 .item_lip .desBox {
   top: 30px;
   left: 50px;
+}
+
+.introductionList {
+  margin-top: 10em;
+  margin-bottom: 10em;
+}
+
+.introductionList ul {
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  padding: 0;
+}
+.introItem {
+  width: 30%;
+  margin: 1em;
+}
+.introItem h2 {
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.introItem span {
+  margin: 1em 0 1.5em 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: black;
 }
 
 @media screen and (max-width: 1000px) {
@@ -313,11 +339,13 @@
   }
 
   .styleItems ul {
+    padding: 0;
     flex-direction: column;
   }
 
   .styleItems li {
     width: 100%;
+    padding: 0;
   }
 
   .item_soap,
@@ -325,9 +353,11 @@
   .item_lip,
   .item_cream {
     margin: 0;
+    width: 100%;
   }
 
   .item_soap .title {
+    margin: 0;
     left: -100px;
     font-size: 2.5em;
   }
@@ -367,5 +397,16 @@
   .item_lip .desBox {
     left: 20px;
     bottom: 40px;
+  }
+
+  .introductionList ul {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  .introItem {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2em;
   }
 }

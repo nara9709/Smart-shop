@@ -59,7 +59,10 @@ function CartItem({ product }) {
             removeCartItem.mutate({ productId: product.id });
           }}
         >
-          <DeleteForeverIcon fontSize="medium"></DeleteForeverIcon>
+          <DeleteForeverIcon
+            fontSize="medium"
+            className={styles.deleteButton}
+          ></DeleteForeverIcon>
         </IconButton>
       </div>
     </>

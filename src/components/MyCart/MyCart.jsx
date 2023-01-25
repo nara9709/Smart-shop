@@ -93,7 +93,7 @@ export default function MyCart({ user }) {
               {products &&
                 products.map((product) => {
                   return (
-                    <li>
+                    <li key={product.id}>
                       <em>{product.title}</em>
                       <em className={styles.summaryPrice}>
                         ${product.price * product.quantity}

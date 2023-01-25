@@ -121,7 +121,17 @@ export default function Home() {
                       </p>
                       <div className={styles.shopNow}>
                         <div className={styles.shopLine}></div>{' '}
-                        <Link>Shop Now</Link>
+                        <p
+                          onClick={() => {
+                            navigate('/products', {
+                              state: {
+                                category: 'Soap',
+                              },
+                            });
+                          }}
+                        >
+                          Shop Now
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -139,7 +149,17 @@ export default function Home() {
                       </p>
                       <div className={styles.shopNow}>
                         <div className={styles.shopLine}></div>{' '}
-                        <Link>Shop Now</Link>
+                        <p
+                          onClick={() => {
+                            navigate('/products', {
+                              state: {
+                                category: 'Serum',
+                              },
+                            });
+                          }}
+                        >
+                          Shop Now
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -157,7 +177,17 @@ export default function Home() {
                       </p>
                       <div className={styles.shopNow}>
                         <div className={styles.shopLine}></div>{' '}
-                        <Link>Shop Now</Link>
+                        <p
+                          onClick={() => {
+                            navigate('/products', {
+                              state: {
+                                category: 'Cream',
+                              },
+                            });
+                          }}
+                        >
+                          Shop Now
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -175,7 +205,17 @@ export default function Home() {
                       </p>
                       <div className={styles.shopNow}>
                         <div className={styles.shopLine}></div>{' '}
-                        <Link>Shop Now</Link>
+                        <p
+                          onClick={() => {
+                            navigate('/products', {
+                              state: {
+                                category: 'Lip',
+                              },
+                            });
+                          }}
+                        >
+                          Shop Now
+                        </p>
                       </div>
                     </div>
                   </div>

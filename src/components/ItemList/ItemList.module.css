@@ -1,4 +1,4 @@
-@value brandColor from '../../common/colors.css';
+@value brandColor, borderColor from '../../common/colors.css';
 
 .itemList {
   list-style: none;
@@ -40,6 +40,53 @@
   animation: spin-anim 1.2s linear infinite;
 }
 
+.sort {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin-right: 8em;
+  margin-bottom: 7em;
+}
+
+.sort p {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+}
+
+.sort p:hover {
+  cursor: pointer;
+}
+
+.sort span {
+  font-weight: 500;
+  margin-left: 0.5em;
+}
+
+.sortList {
+  width: 150px;
+  border: 1px solid borderColor;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.sortList ul {
+  margin: 0;
+  padding: 0;
+}
+
+.sortList li {
+  padding: 0.5em 0 0.5em 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.sortList li:hover {
+  cursor: pointer;
+  background-color: borderColor;
+}
+
 @keyframes spin-anim {
   0% {
     transform: rotate(0deg);
@@ -69,5 +116,14 @@
     display: flex;
     justify-content: center;
     margin-top: 2em;
+  }
+
+  .sort {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .sortList {
+    left: 130px;
   }
 }

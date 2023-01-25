@@ -58,14 +58,18 @@ export default function Header() {
 
       <Link to="">
         {!user && (
-          <Button onClick={login} size="medium" variant="outlined">
-            Login
-          </Button>
+          <span className={styles.loginButton}>
+            <Button onClick={login} size="medium" variant="outlined">
+              Login
+            </Button>
+          </span>
         )}
         {user && (
-          <Button onClick={logout} size="medium" variant="outlined">
-            Logout
-          </Button>
+          <span className={styles.logoutButton}>
+            <Button onClick={logout} size="medium" variant="outlined">
+              Logout
+            </Button>
+          </span>
         )}
       </Link>
       {isOpen && isVisible && (

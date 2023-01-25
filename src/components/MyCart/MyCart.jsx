@@ -31,31 +31,33 @@ export default function MyCart({ user }) {
   // When page is loading, show loading animation
   if (isLoading)
     return (
-      <Box
-        sx={{
-          display: 'flex',
-          marginTop: '50px',
-        }}
-      >
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          width={200}
-          height={100}
-        />
+      <div className={styles.skeleton}>
         <Box
           sx={{
-            marginTop: '20px',
-            marginLeft: '20px',
-            width: '900px',
+            display: 'flex',
+            marginTop: '50px',
           }}
         >
-          <Skeleton animation={false} />
-          <Skeleton animation="wave" />
-          <Skeleton animation={false} />
+          <Skeleton
+            animation="wave"
+            variant="rectangular"
+            width={200}
+            height={100}
+          />
+          <Box
+            sx={{
+              marginTop: '20px',
+              marginLeft: '20px',
+              width: '900px',
+            }}
+          >
+            <Skeleton animation={false} />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
+          <Skeleton animation="wave" variant="rectangular" />
         </Box>
-        <Skeleton animation="wave" variant="rectangular" />
-      </Box>
+      </div>
     );
 
   return (

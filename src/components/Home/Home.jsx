@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'react-slideshow-image/dist/styles.css';
 import styles from './Home.module.css';
-import ItemList from '../ItemList/ItemList';
 import useFade from '../../hooks/useFade';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router';
@@ -12,9 +11,10 @@ import WalletIcon from '@mui/icons-material/Wallet';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
-  const [isVisible, setVisible, fadeProps] = useFade();
+  const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeIn');
   const [textShow, setTextShow] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     setVisible(true);
     const timeout = setTimeout(() => {
@@ -214,7 +214,6 @@ export default function Home() {
               </ul>
             </div>
           </section>
-          <ItemList></ItemList>
         </>
       )}
     </>

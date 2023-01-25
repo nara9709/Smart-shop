@@ -15,6 +15,12 @@
   text-align: center;
 }
 
+@media screen and (max-width: 1200px) {
+  .section {
+    max-width: 900px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .section {
     margin: auto;

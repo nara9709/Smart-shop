@@ -11,6 +11,7 @@ function Item({ product, product: { id, image, title, category, price } }) {
       state: { product },
     });
   };
+
   return (
     <div className={styles.itemContainer} onClick={goToDetail}>
       <img className={styles.image} src={image} alt={title} />

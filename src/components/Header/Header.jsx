@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdOutlineModeEdit } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
-
 import User from '../User/User';
 import Button from '@mui/material/Button';
 import { useAuthContext } from '../context/AuthContext';
-
+import { Squash as Hamburger } from 'hamburger-react';
 import CartStatus from '../CartStatus/CartStatus';
+import useFade from '../../hooks/useFade';
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
+  const [isOpen, setOpen] = useState(false);
+  const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeSide');
+  const navigate = useNavigate();
+
+  const toggleMenu = () => {
+    if (!isOpen) {
+      setOpen(true);
+      setVisible(true);
+    } else {
+      setOpen(false);
+      setVisible(false);
+    }
+  };
 
   return (
     <nav className={styles.nav}>
       <div className={styles.leftNav}>
+        <div className={styles.burgerMenu}>
+          <Hamburger toggled={isOpen} toggle={toggleMenu} size={20} />
+        </div>
         <Link to="">
           <p className={styles.textLogo}>SKI N BODY</p>
         </Link>
@@ -52,6 +68,52 @@ export default function Header() {
           </Button>
         )}
       </Link>
+      {isOpen && isVisible && (
+        <div {...fadeProps} className={styles.toggleMenu}>
+          <ul>
+            <li
+              onClick={() => {
+                navigate('/products', { state: { category: 'Serum' } });
+                toggleMenu();
+              }}
+            >
+              Serum
+            </li>
+            <li
+              onClick={() => {
+                navigate('/products', { state: { category: 'Cream' } });
+                toggleMenu();
+              }}
+            >
+              Cream
+            </li>
+            <li
+              onClick={() => {
+                navigate('/products', { state: { category: 'Soap' } });
+                toggleMenu();
+              }}
+            >
+              Soap
+            </li>
+            <li
+              onClick={() => {
+                navigate('/products', { state: { category: 'Body' } });
+                toggleMenu();
+              }}
+            >
+              Body
+            </li>
+            <li
+              onClick={() => {
+                navigate('/products', { state: { category: 'Lip' } });
+                toggleMenu();
+              }}
+            >
+              Lip
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

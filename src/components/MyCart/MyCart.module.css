@@ -181,4 +181,10 @@
   .subtotal {
     width: 80px;
   }
+
+  .skeleton {
+    margin-top: 7em;
+    max-width: 300px;
+    margin: auto;
+  }
 }

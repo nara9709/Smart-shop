@@ -49,11 +49,25 @@
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .itemList {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 2em;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .itemList {
     margin-top: 2em;
   }
   .item {
     width: 40%;
+  }
+
+  .skeleton {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
   }
 }

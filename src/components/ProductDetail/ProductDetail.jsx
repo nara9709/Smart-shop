@@ -18,7 +18,7 @@ import useCarts from '../../hooks/useCarts.jsx';
 import useProducts from '../../hooks/useProducts.jsx';
 
 export default function ProductDetail() {
-  const user = useAuthContext();
+  const { user, login } = useAuthContext();
   const { image, title, category, price, description, options, id } =
     useLocation().state.product;
   const navigate = useNavigate();
@@ -28,6 +28,8 @@ export default function ProductDetail() {
   const [openConfirm, setOpenConfirm] = useState(false);
   const { addOrUpdate } = useCarts();
   const { removeProduct } = useProducts();
+
+  console.log(user);
 
   // Delete product
   const deleteProduct = () => {
@@ -39,10 +41,9 @@ export default function ProductDetail() {
   };
 
   // Handling modal window
-  const handleModalOpen = () =>
-    user.uid ? setOpenAfterCart(true) : setOpenAlert(true);
+  const handleModalOpen = () => setOpenAfterCart(true);
   const handleModalClose = () => {
-    user.uid ? setOpenAfterCart(false) : setOpenAlert(false);
+    setOpenAfterCart(false);
   };
 
   // Get option value
@@ -53,8 +54,9 @@ export default function ProductDetail() {
   // Add product to Cart
   const addProductCart = () => {
     // If user is not login, Show modal
-    if (!user.uid) {
-      handleModalOpen();
+    if (!user) {
+      login();
+
       return;
     }
 
@@ -124,7 +126,7 @@ export default function ProductDetail() {
           >
             Add Cart
           </Button>
-          {user.uid !== null && user.user.isAdmin ? (
+          {user && user.uid !== null && user.isAdmin ? (
             <Button
               variant="contained"
               className={styles.button}
@@ -138,30 +140,12 @@ export default function ProductDetail() {
               Delete Product
             </Button>
           ) : null}
-
-          {/* {user && (
-            <div>
-              {user.user.isAdmin && (
-                <Button
-                  variant="contained"
-                  className={styles.button}
-                  onClick={openConfirmModal}
-                  fullWidth
-                  sx={{
-                    marginTop: 3,
-                  }}
-                  color="error"
-                >
-                  Delete Product
-                </Button>
-              )}
-            </div>
-          )} */}
         </div>
       </section>
       <Reviews></Reviews>
 
       {/* Modal windows */}
+
       <Modal
         keepMounted
         open={openAlert}
@@ -237,7 +221,7 @@ export default function ProductDetail() {
             className={styles.modalTitle}
             variant="p"
             component="h3"
-            sx={{ fontWeight: '300' }}
+            sx={{ fontWeight: '300', marginBottom: 1 }}
           >
             Are you sure to delete this product?
           </Typography>
@@ -279,10 +263,10 @@ const style = {
   top: '45%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 280,
   bgcolor: 'background.paper',
   border: '2px solid #dbc7bd',
   borderRadius: '10px',
   boxShadow: 24,
-  p: 4,
+  p: 3,
 };

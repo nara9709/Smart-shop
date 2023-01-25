@@ -102,6 +102,10 @@ export default function MyCart({ user }) {
                   );
                 })}
             </ul>
+            <div className={styles.total}>
+              <span> TOTAL: </span>
+              <span>${totalPrice}</span>
+            </div>
           </div>
           <Button
             variant="contained"

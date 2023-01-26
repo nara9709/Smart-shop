@@ -5,9 +5,11 @@ import styles from './Header.module.css';
 import User from '../User/User';
 import Button from '@mui/material/Button';
 import { useAuthContext } from '../context/AuthContext';
-import { Squash as Hamburger } from 'hamburger-react';
 import CartStatus from '../CartStatus/CartStatus';
 import useFade from '../../hooks/useFade';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton } from '@mui/material';
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
@@ -29,7 +31,10 @@ export default function Header() {
     <nav className={styles.nav}>
       <div className={styles.leftNav}>
         <div className={styles.burgerMenu}>
-          <Hamburger toggled={isOpen} toggle={toggleMenu} size={20} />
+          <IconButton onClick={toggleMenu}>
+            {!isOpen && <MenuIcon fontSize="large" />}
+            {isOpen && <CloseIcon fontSize="large" />}
+          </IconButton>
         </div>
         <Link to="">
           <p className={styles.textLogo}>SKI N BODY</p>

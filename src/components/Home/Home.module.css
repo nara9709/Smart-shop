@@ -293,7 +293,7 @@
     display: flex;
     height: 844px;
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
     width: 90%;
   }
 
@@ -363,6 +363,7 @@
   }
 
   .item_soap .desBox {
+    width: 60%;
     left: 100px;
     top: 65px;
   }
@@ -378,19 +379,22 @@
   }
 
   .item_cream .title {
+    width: 100%;
     top: 0;
-    left: -100px;
+    left: -68px;
     font-size: 2.5em;
   }
 
   .item_cream .desBox {
+    width: 90%;
     left: 10px;
     bottom: 40px;
   }
 
   .item_lip .title {
+    width: 100%;
     bottom: 0;
-    left: -150px;
+    left: -78px;
     font-size: 2.5em;
   }
 

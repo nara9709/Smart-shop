@@ -1,0 +1,50 @@
+@value brandColor from '../../common/colors.css';
+
+.reviewBox {
+  text-align: start;
+  margin-bottom: 4em;
+  margin-top: 2em;
+}
+
+.ratingBox {
+  display: flex;
+  align-items: center;
+}
+
+.rating,
+.ratingNum,
+.headline {
+  margin-right: 0.5em;
+}
+
+.ratingNum {
+  font-weight: 700;
+  padding-right: 0.5em;
+}
+
+.headline {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.commentBox {
+  font-size: 0.9em;
+  font-weight: 300;
+}
+
+.skinType {
+  font-size: 1em;
+}
+
+.starBox {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+  .ratingBox {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+  }
+}

@@ -159,7 +159,10 @@ export async function getCartItems(userId) {
 export async function addReview(productId, review) {
   const reviewId = uuid();
 
-  return set(ref(db, `products/${productId}/reviews/${reviewId}`), review)
+  return set(ref(db, `products/${productId}/reviews/${reviewId}`), {
+    ...review,
+    id: reviewId,
+  })
     .then(() => {
       return true;
     })

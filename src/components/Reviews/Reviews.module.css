@@ -1,3 +1,64 @@
+.section {
+  border-top: 1px solid #eee;
+  padding-top: 1.5em;
+  margin-top: 8em;
+}
+
+.section ul {
+  padding: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2.5em;
+}
+
 .successBox {
   margin-top: 2em;
+}
+
+.startBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.star {
+  margin-right: 0.3em;
+}
+
+.starAverageNum {
+  margin-right: 0.3em;
+  font-weight: 600;
+}
+
+.starAverageText {
+  font-weight: 300;
+}
+
+.subTitle {
+  text-align: start;
+  font-weight: 400;
+  background-color: #eee;
+  padding: 1.2em 0em 1.2em 1em;
+  margin-top: 2em;
+}
+
+.skeleton {
+  margin: auto;
+  width: 90%;
+  margin-top: 1.5em;
+}
+
+@media screen and (max-width: 450px) {
+  .section {
+    margin-top: 2em;
+    padding: 1.2em;
+  }
+
+  .subTitle {
+    margin-top: 4em;
+  }
 }

@@ -13,7 +13,6 @@ function useCarts(props) {
 
   //   Get cart data from firebase
   const cartsQuery = useQuery(['carts', userId || ''], () => getCart(userId), {
-    staleTime: 1000 * 60,
     enabled: !!userId,
   });
 

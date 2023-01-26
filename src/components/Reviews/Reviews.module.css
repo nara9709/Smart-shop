@@ -53,6 +53,10 @@
 }
 
 @media screen and (max-width: 450px) {
+  .title {
+    font-size: 2em;
+  }
+
   .section {
     margin-top: 2em;
     padding: 1.2em;

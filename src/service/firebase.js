@@ -137,36 +137,6 @@ export async function removeFromProductList(productId) {
   return remove(ref(db, `products/${productId}`));
 }
 
-// export async function addOrUpdateToCart(userId, product) {
-//   const dbRef = ref(getDatabase(firebaseApp));
-
-//   // Find the same products & options in the cart
-//   // return get(child(dbRef, 'users/' + userId + '/carts/' + product.id)).then(
-//   //   (snapshot) => {
-//   //     // Check if there's the same product in the cart
-//   //     if (snapshot.exists()) {
-//   //       // If It exists, check if it's the same option
-//   //       if (snapshot.val()[[product.option]]) {
-//   //         update(
-//   //           ref(
-//   //             db,
-//   //             'users/' + userId + `/carts/${product.id}/${product.option}`
-//   //           ),
-//   //           product
-//   //         );
-//   //         return;
-//   //       }
-//   //     }
-//   //     // Add a new product if it's not the same option or if it doesn't have the product itself in the cart
-//   //   }
-//   // );
-
-//   return set(
-//     ref(db, 'users/' + userId + `/carts/${product.id}/${product.option}`),
-//     product
-//   );
-// }
-
 // Get cart items
 export async function getCartItems(userId) {
   const dbRef = ref(getDatabase(firebaseApp));
@@ -176,6 +146,39 @@ export async function getCartItems(userId) {
       if (snapshot.exists()) {
         const carts = snapshot.val();
         return Object.values(carts);
+      } else {
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+// Upload new reivew
+export async function addReview(productId, review) {
+  const reviewId = uuid();
+
+  return set(ref(db, `products/${productId}/reviews/${reviewId}`), review)
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.error(error);
+      return false;
+    });
+}
+
+// Get reivews
+
+export async function getReviews(productId) {
+  const dbRef = ref(getDatabase(firebaseApp));
+
+  return get(child(dbRef, `products/${productId}/reviews`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const reviews = snapshot.val();
+        return Object.values(reviews);
       } else {
         return null;
       }

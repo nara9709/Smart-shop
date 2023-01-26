@@ -1,11 +1,4 @@
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Skeleton,
-  Stack,
-} from '@mui/material';
+import { Skeleton, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import useProducts from '../../hooks/useProducts.jsx';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';

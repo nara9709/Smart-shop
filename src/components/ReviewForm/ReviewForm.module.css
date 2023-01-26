@@ -1,0 +1,18 @@
+@value borderColor from '../../common/colors.css';
+
+.writeRivewContainer {
+  text-align: start;
+}
+
+.writeRivewContainer input {
+  margin: 0;
+  border-radius: 3px;
+}
+
+.writeRivewContainer p {
+  margin-bottom: 0.5em;
+}
+
+.inputBox {
+  margin: 2.5em 0em 2.5em 0em;
+}

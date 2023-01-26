@@ -29,8 +29,6 @@ export default function ProductDetail() {
   const { addOrUpdate } = useCarts();
   const { removeProduct } = useProducts();
 
-  console.log(user);
-
   // Delete product
   const deleteProduct = () => {
     removeProduct.mutate({ productId: id });
@@ -124,7 +122,7 @@ export default function ProductDetail() {
               marginTop: 3,
             }}
           >
-            Add Cart
+            Add to Cart
           </Button>
           {user && user.uid !== null && user.isAdmin ? (
             <Button
@@ -142,7 +140,7 @@ export default function ProductDetail() {
           ) : null}
         </div>
       </section>
-      <Reviews></Reviews>
+      <Reviews productId={id}></Reviews>
 
       {/* Modal windows */}
 

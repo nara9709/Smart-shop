@@ -10,11 +10,13 @@ import useFade from '../../hooks/useFade';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
+import Login from '../Login/Login';
 
 export default function Header() {
-  const { user, login, logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
   const [isOpen, setOpen] = useState(false);
   const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeSide');
+  const [openLogin, setOpenLogin] = useState(false);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -29,6 +31,7 @@ export default function Header() {
 
   return (
     <nav className={styles.nav}>
+      {openLogin && <Login setOpenLogin={setOpenLogin} />}
       <div className={styles.leftNav}>
         <div className={styles.burgerMenu}>
           <IconButton onClick={toggleMenu}>
@@ -64,7 +67,13 @@ export default function Header() {
       <Link to="">
         {!user && (
           <span className={styles.loginButton}>
-            <Button onClick={login} size="medium" variant="outlined">
+            <Button
+              onClick={() => {
+                setOpenLogin(true);
+              }}
+              size="medium"
+              variant="outlined"
+            >
               Login
             </Button>
           </span>

@@ -15,6 +15,13 @@
   text-align: center;
 }
 
+@media screen and (max-width: 1500px) {
+  .section {
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .section {
     max-width: 900px;
@@ -23,8 +30,9 @@
 
 @media screen and (max-width: 480px) {
   .section {
+    position: relative;
     margin: auto;
-    width: 90%;
+    width: 400px;
     max-width: 400px;
   }
   .slideContainer {

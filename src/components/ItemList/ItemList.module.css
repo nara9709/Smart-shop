@@ -45,7 +45,7 @@
   justify-content: flex-end;
   position: relative;
   margin-right: 8em;
-  margin-bottom: 7em;
+  margin-bottom: 3em;
 }
 
 .sort p {
@@ -69,11 +69,13 @@
   position: absolute;
   top: 50px;
   right: 10px;
+  font-size: 0.8em;
 }
 
 .sortList ul {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
 .sortList li {
@@ -121,6 +123,7 @@
   .sort {
     justify-content: center;
     margin-right: 0;
+    margin-bottom: 1.5em;
   }
 
   .sortList {

@@ -161,6 +161,10 @@
   font-size: 0.9em;
 }
 
+.shopNow p {
+  cursor: pointer;
+}
+
 .item_soap {
   background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1674448245/sincerely-media-gKqUuChJ83g-unsplash_-_%ED%8E%B8%EC%A7%91%ED%95%A8_h7tbmj.png);
   background-size: cover;

@@ -46,7 +46,7 @@ function ItemList({ category }) {
         <div className={styles.sort}>
           <p
             onClick={() => {
-              setOpenSort(true);
+              isOpenSort ? setOpenSort(false) : setOpenSort(true);
             }}
           >
             Sort by:
@@ -59,7 +59,7 @@ function ItemList({ category }) {
                 <li
                   onClick={() => {
                     setOpenSort(false);
-                    sortProductsBy('new');
+                    sortProductsBy('all');
                     setSortName('NEW');
                   }}
                 >

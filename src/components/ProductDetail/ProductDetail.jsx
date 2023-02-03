@@ -16,26 +16,29 @@ import {
 } from '@mui/material';
 import useCarts from '../../hooks/useCarts.jsx';
 import useProducts from '../../hooks/useProducts.jsx';
+import Login from '../Login/Login.jsx';
 
 export default function ProductDetail() {
-  const { user, login } = useAuthContext();
+  const { user } = useAuthContext();
   const { image, title, category, price, description, options, id } =
     useLocation().state.product;
   const navigate = useNavigate();
   const [option, setOption] = useState(options[0]);
-  const [openAlert, setOpenAlert] = useState(false);
   const [openAfterCart, setOpenAfterCart] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const { addOrUpdate } = useCarts();
   const { removeProduct } = useProducts();
 
   // Delete product
   const deleteProduct = () => {
-    removeProduct.mutate({ productId: id });
-    setOpenConfirm(false);
-    navigate('/', {
-      replace: true,
-    });
+    // removeProduct.mutate({ productId: id });
+    // setOpenConfirm(false);
+    // navigate('/', {
+    //   replace: true,
+    // });
+
+    alert('The function is implemented, but I blocked it just in case.🧐');
   };
 
   // Handling modal window
@@ -53,8 +56,7 @@ export default function ProductDetail() {
   const addProductCart = () => {
     // If user is not login, Show modal
     if (!user) {
-      login();
-
+      setOpenLogin(true);
       return;
     }
 
@@ -84,6 +86,7 @@ export default function ProductDetail() {
   return (
     <>
       <section className={styles.container}>
+        {openLogin && <Login setOpenLogin={setOpenLogin} />}
         <img className={styles.image} src={image} alt={title} />
         <div className={styles.product_info_container}>
           <div className={styles.titleContainer}>
@@ -143,28 +146,6 @@ export default function ProductDetail() {
       <Reviews productId={id}></Reviews>
 
       {/* Modal windows */}
-
-      <Modal
-        keepMounted
-        open={openAlert}
-        onClose={handleModalClose}
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
-      >
-        <Box sx={style}>
-          <Typography
-            id="keep-mounted-modal-title"
-            variant="h6"
-            component="h2"
-            sx={{ color: 'red', fontWeight: '600' }}
-          >
-            Login needed
-          </Typography>
-          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-            You need to login to add a item to your cart
-          </Typography>
-        </Box>
-      </Modal>
 
       <Modal
         keepMounted

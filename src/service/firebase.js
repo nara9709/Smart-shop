@@ -5,24 +5,12 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import { v4 as uuid } from 'uuid';
 
-import {
-  getDatabase,
-  ref,
-  get,
-  set,
-  child,
-  onValue,
-  query,
-  orderByKey,
-  orderByValue,
-  orderByChild,
-  equalTo,
-  update,
-  remove,
-} from 'firebase/database';
+import { getDatabase, ref, get, set, child, remove } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -39,13 +27,27 @@ const db = getDatabase(firebaseApp);
 const provider = new GoogleAuthProvider();
 
 // Login with Google
-export default function login() {
+export default function loginWithGoogle() {
   signInWithPopup(auth, provider).catch(console.error);
+}
+
+// Login with email and password
+export function loginWithEmail(email, password) {
+  signInWithEmailAndPassword(auth, email, password).catch(console.error);
 }
 
 // Logout
 export function logout() {
   signOut(auth).catch(console.error);
+}
+
+// Update profile
+export async function update() {
+  await updateProfile(auth.currentUser, {
+    displayName: 'Test account',
+    photoURL:
+      'https://res.cloudinary.com/nara9709/image/upload/v1675458172/user_gi4nw2.png',
+  });
 }
 
 // Observe user state

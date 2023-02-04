@@ -211,6 +211,7 @@ function ItemList({ category }) {
               >
                 <MenuItem value={'Dry'}>Dry</MenuItem>
                 <MenuItem value={'Oily'}>Oily</MenuItem>
+                <MenuItem value={'Combination'}>Combination</MenuItem>
                 <MenuItem value={'Normal'}>Normal</MenuItem>
               </Select>
             </FormControl>
@@ -231,6 +232,7 @@ function ItemList({ category }) {
                 <MenuItem value={'Puffiness'}>Puffiness</MenuItem>
                 <MenuItem value={'Cleansing'}>Cleansing</MenuItem>
                 <MenuItem value={'Visible Shine'}>Visible Shine</MenuItem>
+
                 <MenuItem value={'All'}>All</MenuItem>
               </Select>
 

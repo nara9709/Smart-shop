@@ -119,6 +119,24 @@ export default function NewProduct() {
           onChange={handleChange}
           required
         />
+
+        <input
+          type="text"
+          placeholder="Skin Type(Oliy, Dry or Combination)"
+          name="skintype"
+          value={product.skintype ?? ''}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Concern(Dryness,Look of Redness,Dark Circles,Puffiness,Cleansing or Visible Shine )"
+          name="concern"
+          value={product.concern ?? ''}
+          onChange={handleChange}
+          required
+        />
         <input
           type="text"
           placeholder="Options(Separated by comma(,))"

@@ -20,8 +20,17 @@ import Login from '../Login/Login.jsx';
 
 export default function ProductDetail() {
   const { user } = useAuthContext();
-  const { image, title, category, price, description, options, id } =
-    useLocation().state.product;
+  const {
+    image,
+    title,
+    category,
+    price,
+    description,
+    options,
+    id,
+    skintype,
+    concern,
+  } = useLocation().state.product;
   const navigate = useNavigate();
   const [option, setOption] = useState(options[0]);
   const [openAfterCart, setOpenAfterCart] = useState(false);
@@ -141,8 +150,22 @@ export default function ProductDetail() {
               Delete Product
             </Button>
           ) : null}
+          <div className={styles.tableText}>
+            <span className={styles.line}></span>
+            <span className={styles.text}> We recommend this item for </span>
+            <span className={styles.line}></span>
+          </div>
+          <div className={styles.rowHeader}>
+            <div className={styles.cell}>Skin Type</div>
+            <div className={styles.cell}> Concern</div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.cell}>{skintype}</div>
+            <div className={styles.cell}>{concern}</div>
+          </div>
         </div>
       </section>
+
       <Reviews productId={id}></Reviews>
 
       {/* Modal windows */}

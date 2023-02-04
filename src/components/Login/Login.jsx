@@ -4,12 +4,22 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Button, IconButton, Alert } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useAuthContext } from '../context/AuthContext';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Login({ setOpenLogin }) {
   const { loginWithEmail, loginWithGoogle } = useAuthContext();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // For component show up animation
+      setOpen(true);
+    }, 5);
+  }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={open ? `${styles.containerAni}` : `${styles.container} `}>
       <IconButton
         className={styles.closeBtn}
         onClick={() => {
@@ -20,8 +30,8 @@ function Login({ setOpenLogin }) {
       </IconButton>
       <h1>Login</h1>
       <Alert severity="info" className={styles.alert}>
-        Login with a test account to use all features on this website
-        <strong>(Admin account)</strong>
+        Login with the below test account to use all features on this website
+        <strong> (Admin account)</strong>
       </Alert>
       <form>
         <input type="id" placeholder="test@test.com" />

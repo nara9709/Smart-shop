@@ -1,4 +1,4 @@
-[header](https://capsule-render.vercel.app/api?type=waving&color=b08968&height=300&section=header&text=Skincare%e-commerce website&fontSize=70&fontColor=fff)
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=Skincare%20e-commerce%20Website&fontSize=90)
 
 
 
@@ -50,27 +50,30 @@ This website, the Admin account shows an icon that goes to a page where you can 
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675831058/reactrouter1_l92rp3.png" alt="reactrouter" />
 <br/>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675831058/reactrouter2_bbosdu.png" alt="reactrouter" />
+
+<br/>
 <br/>
 
 # Core fetures 
 </br>
+
 ## Wirte a Review 🌟
 Users can write reviews and ratings on the product. <br/>
 This score is also averaged and found on the Product Details page.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675828379/review_wmpneu.gif" alt="review"/>
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675828379/review_wmpneu.gif" alt="review" />
 
 <br/>
 
 ## Upload new product (Only for admin user) 🌟
 Users with admin roles can upload and erase new products as much as they want.
 <br/>
-<img src="" alt=""/>
+<img src="" alt="" />
 
 ## Add product to user's cart 🌟
 Users who login can put the product into their cart and delete it as much as they want.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675829585/ezgif.com-optimize_cwyh63.gif" alt="Cart"/>
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675829585/ezgif.com-optimize_cwyh63.gif" alt="Cart" />
 
 
 ## Login with email and social account 🌟
@@ -80,5 +83,7 @@ Users can login with email or their Google account
 
 <br/>
 <br/>
+<br/>
+<br/>
 
-<a href="https://ski-n-body.netlify.app/"> 👉🏻Visit to click </a>
+# <a href="https://ski-n-body.netlify.app/"> 👉🏻Visit to click </a>

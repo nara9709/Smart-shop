@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=b08968&height=300&section=header&text=Skincare%e-commerce website&fontSize=70&fontColor=fff)
+[header](https://capsule-render.vercel.app/api?type=waving&color=b08968&height=300&section=header&text=Skincare%e-commerce website&fontSize=70&fontColor=fff)
 
 
 
@@ -27,19 +27,20 @@ Admin user can upload their item and control their products!
 
 # Core skills for this project
 </br>
-### React query (TanStack query)
+
+## React query (TanStack query)
 React query was used to make data patching, caching, synchronous, <br/>
 and updating the status of the server easier within the React application.
 </br>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675828949/reactquery_djr24b.png" alt="reactquery"/>
 
-###React custom hooks ✨
+## React custom hooks ✨
 Custom hooks were used to separate the UI code from the code containing business logic, <br/>
 and react queries and query mutations using the same key were made into one custom hook, making it easy to maintain, clean, scalable, and easy to test.
 </br>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675828952/customhook_vhfl4a.png"/>
 
-###React Router ✨
+## React Router ✨
 React Router was used to show multiple pages in the Single Page Application, <br/>
 aditionally, it was used to distinguish between users with Admin privileges and regular users. <br/>
 This website, the Admin account shows an icon that goes to a page where you can upload a product, and this page is prevented accessing regular users.
@@ -53,7 +54,7 @@ This website, the Admin account shows an icon that goes to a page where you can 
 
 # Core fetures 
 </br>
-### Wirte a Review 🌟
+## Wirte a Review 🌟
 Users can write reviews and ratings on the product. <br/>
 This score is also averaged and found on the Product Details page.
 <br/>
@@ -61,18 +62,18 @@ This score is also averaged and found on the Product Details page.
 
 <br/>
 
-### Upload new product (Only for admin user) 🌟
+## Upload new product (Only for admin user) 🌟
 Users with admin roles can upload and erase new products as much as they want.
 <br/>
 <img src="" alt=""/>
 
-### Add product to user's cart 🌟
+## Add product to user's cart 🌟
 Users who login can put the product into their cart and delete it as much as they want.
 <br/>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675829585/ezgif.com-optimize_cwyh63.gif" alt="Cart"/>
 
 
-### Login with email and social account 🌟
+## Login with email and social account 🌟
 Users can login with email or their Google account
 <br/>
 <img src="" alt="login" />

@@ -21,10 +21,10 @@
 An E-commerce website where users can explore products, <br/>
 check reviews, save items to their cart, and write reviews✍🏻 <br/> <br/>
 Admin user can upload their item and control their products!
-<br>
-
+<br/>
+<br/>
 Target User: Shoppers who have sensitive skin or are interested in the environment
-<br>
+<br/>
 <br/>
 
 # Core skills for this project

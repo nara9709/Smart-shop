@@ -60,8 +60,7 @@ This website, the Admin account shows an icon that goes to a page where you can 
 Users can write reviews and ratings on the product. <br/>
 This score is also averaged and found on the Product Details page.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833060/review_1_naooax.gif" alt="review" />
-
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833060/review_1_naooax.gif" width="400" alt="upload" />
 <br/>
 
 ## Upload new product (Only for admin user) 🌟
@@ -72,7 +71,7 @@ Users with admin roles can upload and erase new products as much as they want.
 ## Add product to user's cart 🌟
 Users who login can put the product into their cart and delete it as much as they want.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833034/cart_1_oqnbrt.gif" alt="Cart" />
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833034/cart_1_oqnbrt.gif" width="400" alt="upload" />
 
 
 ## Login with email and social account 🌟

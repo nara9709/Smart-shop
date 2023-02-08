@@ -20,9 +20,7 @@
 <br>
 An E-commerce website where users can explore products, <br/>
 check reviews, save items to their cart, and write reviews✍🏻 <br/> <br/>
-Admin user can upload their item and control their products!
-<br/>
-<br/>
+Admin user can upload their item and control their products! <br/><br/>
 Target User: Shoppers who have sensitive skin or are interested in the environment
 <br/>
 <br/>
@@ -30,7 +28,7 @@ Target User: Shoppers who have sensitive skin or are interested in the environme
 # Core skills for this project
 </br>
 
-## React query (TanStack query)
+## React query (TanStack query) ✨
 React query was used to make data patching, caching, synchronous, <br/>
 and updating the status of the server easier within the React application.
 </br>

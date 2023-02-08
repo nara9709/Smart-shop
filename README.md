@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=Rounded&color=d5bdaf&height=300&section=header&text=Skin%care%20e-commerce&fontSize=40&website&animation=fadeIn)
+![header](https://capsule-render.vercel.app/api?type=Rounded&color=d5bdaf&height=200&section=header&text=Skin%20care%20e-commerce%website&fontSize=40&website&animation=fadeIn)
 
 
 # 🛠Skills

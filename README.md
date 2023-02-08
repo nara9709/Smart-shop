@@ -27,29 +27,51 @@ Target User: Shoppers who have sensitive skin or are interested in the environme
 
 # Core skills for this project
 </br>
+<img alt="react.js" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
 
-## React query (TanStack query) ✨
+### React query (TanStack query) ✨
 React query was used to make data patching, caching, synchronous, <br/>
 and updating the status of the server easier within the React application.
 </br>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675828949/reactquery_djr24b.png" alt="reactquery"/>
 
-## React custom hooks ✨
+### React custom hooks ✨
 Custom hooks were used to separate the UI code from the code containing business logic, <br/>
 and react queries and query mutations using the same key were made into one custom hook, making it easy to maintain, clean, scalable, and easy to test.
 </br>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675828952/customhook_vhfl4a.png"/>
 
-## React Router ✨
+### React Router ✨
 React Router was used to show multiple pages in the Single Page Application, <br/>
 aditionally, it was used to distinguish between users with Admin privileges and regular users. <br/>
 This website, the Admin account shows an icon that goes to a page where you can upload a product, and this page is prevented accessing regular users.
-
 </br>
 
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675831058/reactrouter1_l92rp3.png" alt="reactrouter" />
 <br/>
 <img src="https://res.cloudinary.com/nara9709/image/upload/v1675831058/reactrouter2_bbosdu.png" alt="reactrouter" />
+</br>
+</br>
+</br>
+</br>
+
+
+ <img alt="PostCSS" src ="https://img.shields.io/badge/PostCSS-F43059.svg?&style=for-the-badge&logo=CSSWizardry&logoColor=fff"/>
+
+## PostCSS
+Using PostCSS, which modularized the CSS, each component was more independent and reusable.
+</br>
+</br>
+</br>
+
+
+<img alt="firebase" src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
+
+## Firebase
+The product information can be uploaded and imported using the Real-time database and was used to store and load user-generated reviews or user-cart information in real-time. Using the Firebase Auth API, it is implemented to log in with an email and Google account, and the information of the logged-in user and the login and logout functions are can use and read in all components using the useContext Hook.
+
+</br>
+
 
 <br/>
 <br/>

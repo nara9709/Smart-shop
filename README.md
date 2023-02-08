@@ -67,7 +67,7 @@ This score is also averaged and found on the Product Details page.
 ## Upload new product (Only for admin user) 🌟
 Users with admin roles can upload and erase new products as much as they want.
 <br/>
-<img src="" alt="" />
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675832507/upload_2_xy29za.gif" alt="upload" />
 
 ## Add product to user's cart 🌟
 Users who login can put the product into their cart and delete it as much as they want.
@@ -78,7 +78,7 @@ Users who login can put the product into their cart and delete it as much as the
 ## Login with email and social account 🌟
 Users can login with email or their Google account
 <br/>
-<img src="" alt="login" />
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675832505/login_1_tfeslr.gif" alt="login" />
 
 <br/>
 <br/>

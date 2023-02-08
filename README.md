@@ -60,7 +60,7 @@ This website, the Admin account shows an icon that goes to a page where you can 
 Users can write reviews and ratings on the product. <br/>
 This score is also averaged and found on the Product Details page.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675828379/review_wmpneu.gif" alt="review" />
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833060/review_1_naooax.gif" alt="review" />
 
 <br/>
 
@@ -72,7 +72,7 @@ Users with admin roles can upload and erase new products as much as they want.
 ## Add product to user's cart 🌟
 Users who login can put the product into their cart and delete it as much as they want.
 <br/>
-<img src="https://res.cloudinary.com/nara9709/image/upload/v1675829585/ezgif.com-optimize_cwyh63.gif" alt="Cart" />
+<img src="https://res.cloudinary.com/nara9709/image/upload/v1675833034/cart_1_oqnbrt.gif" alt="Cart" />
 
 
 ## Login with email and social account 🌟
@@ -85,4 +85,4 @@ Users can login with email or their Google account
 <br/>
 <br/>
 
-# <a href="https://ski-n-body.netlify.app/"> 👉🏻Visit to click </a>
+# <a href="https://ski-n-body.netlify.app/"> 👉🏻Click to visit </a>

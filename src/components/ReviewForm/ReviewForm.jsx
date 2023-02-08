@@ -13,6 +13,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 import { useAuthContext } from '../context/AuthContext';
 import useReview from '../../hooks/useReview';
+import { reverse } from '@cloudinary/url-gen/actions/effect';
 
 function ReviewForm({ setOpenReviewForm, productId, setSuccess }) {
   const [rating, setRating] = useState(2);
@@ -28,6 +29,18 @@ function ReviewForm({ setOpenReviewForm, productId, setSuccess }) {
   };
 
   const uploadReview = () => {
+    // Check if there is empty input on the form
+    if (
+      displayName === '' ||
+      rating === '' ||
+      skinType === '' ||
+      headline === '' ||
+      comments === ''
+    ) {
+      alert('Please fill out all!📝');
+      return;
+    }
+
     const review = { displayName, rating, skinType, headline, comments };
 
     // Upload a reivew

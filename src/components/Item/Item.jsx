@@ -14,7 +14,7 @@ function Item({ product, product: { id, image, title, category, price } }) {
 
   return (
     <div className={styles.itemContainer} onClick={goToDetail}>
-      <img className={styles.image} src={image} alt={title} />
+      <img className={styles.image} src={image} alt={title} loading="lazy" />
       <div className={styles.infoBox}>
         <span className={styles.titleContainer}>
           <p className={styles.category}>{category}</p>

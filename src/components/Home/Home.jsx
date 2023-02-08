@@ -98,7 +98,7 @@ export default function Home() {
               </div>
             )}
             <Bounce className={styles.scrollDownContainer}>
-              <h1 className={styles.scrollDown}>Scroll Dowm </h1>
+              <h1 className={styles.scrollDown}>Scroll Down </h1>
               <p>l</p>
             </Bounce>
           </section>

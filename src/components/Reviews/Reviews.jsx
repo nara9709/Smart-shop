@@ -29,7 +29,7 @@ function Reviews({ productId }) {
       reviews.map((item) => {
         return item.rating;
       })
-    );
+    ).toFixed(1);
 
   return (
     <section className={styles.section}>

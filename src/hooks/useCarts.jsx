@@ -7,7 +7,7 @@ import {
   removeFromCart,
 } from '../service/firebase';
 
-function useCarts(props) {
+function useCarts() {
   const queryClient = useQueryClient();
   const userId = useAuthContext().uid;
 

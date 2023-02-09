@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=d4a373&height=300&section=header&text=Skin%20care%20e-commerce%website&fontSize=60&website&animation=fadeIn&fontColor=fff)
+![header](https://capsule-render.vercel.app/api?type=waving&color=d4a373&height=300&section=header&text=Skin%20care%20e-commerce%20website&fontSize=60&website&animation=fadeIn&fontColor=fff)
 
 
 # 🛠Skills
@@ -68,7 +68,7 @@ Using PostCSS, which modularized the CSS, each component was more independent an
 <img alt="firebase" src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
 
 ## Firebase
-The product information can be uploaded and imported using the Real-time database and was used to store and load user-generated reviews or user-cart information in real-time. Using the Firebase Auth API, it is implemented to log in with an email and Google account, and the information of the logged-in user and the login and logout functions are can use and read in all components using the useContext Hook.
+The product information can be uploaded and imported using the Real-time database and store and load user-generated reviews or user-cart information in real-time. Using the Firebase Auth API, it is implemented to log in with an email and Google account, and the information of the logged-in user and the login and logout functions can use and read in all components using the useContext Hook.
 
 </br>
 

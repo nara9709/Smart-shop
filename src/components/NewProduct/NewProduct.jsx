@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import upload from '../../service/cloudinary';
 import styles from './NewProduct.module.css';
 
-import { Box, CircularProgress, Fab } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Fab,
+  FormControl,
+  MenuItem,
+  Select,
+} from '@mui/material';
 import { green } from '@mui/material/colors';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
@@ -122,29 +129,49 @@ export default function NewProduct() {
 
         <input
           type="text"
-          placeholder="Skin Type(Oliy, Dry or Combination)"
-          name="skintype"
-          value={product.skintype ?? ''}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Concern(Dryness,Look of Redness,Dark Circles,Puffiness,Cleansing or Visible Shine )"
-          name="concern"
-          value={product.concern ?? ''}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
           placeholder="Options(Separated by comma(,))"
           value={product.options ?? ''}
           onChange={handleChange}
           name="options"
           required
         />
+
+        <div className={styles.selectBox}>
+          <span>Skin Type</span>
+          <FormControl fullWidth>
+            <Select
+              name="skintype"
+              value={product.skintype ?? ''}
+              lable="Skin Type"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem value={'Oily'}>Oily</MenuItem>
+              <MenuItem value={'Dry'}>Dry</MenuItem>
+              <MenuItem value={'Combination'}>Combination</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={styles.selectBox}>
+          <span>Skin Concern</span>
+          <FormControl fullWidth>
+            <Select
+              name="concern"
+              labelId="concern-label"
+              value={product.concern ?? ''}
+              lable="Concern"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem value={'Dryness'}>Dryness</MenuItem>
+              <MenuItem value={'Look of Redness'}>Look of Redness</MenuItem>
+              <MenuItem value={'Dark Circles'}>Dark Circles</MenuItem>
+              <MenuItem value={'Puffiness'}>Puffiness</MenuItem>
+              <MenuItem value={'Cleansing'}>Cleansing</MenuItem>
+              <MenuItem value={'Visible Shine'}>Visible Shine</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
 
         <span className={styles.buttonContainer}></span>
 

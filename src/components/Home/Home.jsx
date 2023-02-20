@@ -9,6 +9,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import WalletIcon from '@mui/icons-material/Wallet';
 import { Link } from 'react-router-dom';
+import Quizes from '../QuizIntro/QuizIntro';
 
 export default function Home() {
   const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeIn');

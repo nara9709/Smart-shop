@@ -12,6 +12,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import QuizIntro from './components/QuizIntro/QuizIntro';
+import Quizes from './components/Quizes/Quizes';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +23,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <Home /> },
       { path: '/products', element: <AllProducts /> },
+      {
+        path: '/myskintypetest',
+        element: <QuizIntro />,
+      },
+      { path: '/test', element: <Quizes /> },
       {
         path: '/products/new',
         element: (

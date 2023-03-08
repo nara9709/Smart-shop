@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import 'react-slideshow-image/dist/styles.css';
 import styles from './Home.module.css';
 import useFade from '../../hooks/useFade';
-import { Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button, IconButton, Alert } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Bounce from '../UI/Bounce';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -15,12 +16,18 @@ export default function Home() {
   const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeIn');
   const [textShow, setTextShow] = useState(false);
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setVisible(true);
     const timeout = setTimeout(() => {
       setTextShow(true);
     }, 700);
+
+    setTimeout(() => {
+      // For component show up animation
+      setOpen(true);
+    }, 5);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -253,6 +260,34 @@ export default function Home() {
                   </p>
                 </li>
               </ul>
+            </div>
+
+            <div
+              className={
+                open ? `${styles.containerAni}` : `${styles.container} `
+              }
+            >
+              <IconButton
+                className={styles.closeBtn}
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="large" />
+              </IconButton>
+              <h1>Analyze your skin type</h1>
+              <h3>
+                Get recommendations <br /> for the right product✍🏻
+              </h3>
+              <Button
+                variant="outlined"
+                className={styles.testBtn}
+                onClick={() => {
+                  navigate('/myskintypetest');
+                }}
+              >
+                Start Skin Type Test
+              </Button>
             </div>
           </section>
         </>

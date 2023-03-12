@@ -37,3 +37,37 @@
 .avatar_image img {
   margin-top: 10em;
 }
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 0.3em;
+    width: 100vw;
+  }
+
+  .section h2 {
+    font-size: 3em;
+    margin-top: 0.2em;
+  }
+
+  .section h3 {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+  }
+
+  .section p {
+    width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    font-weight: 300;
+    font-size: 1.1em;
+  }
+
+  .avatar_image {
+    margin: auto;
+  }
+
+  .avatar_image img {
+    margin-top: 5em;
+    width: 350px;
+  }
+}

@@ -1,16 +1,11 @@
 import styles from './MyCart.module.css';
 import React, { useEffect, useState } from 'react';
 import { redirect } from 'react-router';
-
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { Box, Button } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
 import CartItem from '../CartItem/CartItem';
-import PriceCard from '../UI/PriceCard/PriceCard';
 import useCarts from '../../hooks/useCarts';
-import { style } from '@mui/system';
 
 export default function MyCart({ user }) {
   useEffect(() => {

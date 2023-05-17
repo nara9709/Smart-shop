@@ -192,3 +192,22 @@ export async function getReviews(productId) {
       console.error(error);
     });
 }
+
+// Get quizes
+
+export async function getQuiz() {
+  const dbRef = ref(getDatabase(firebaseApp));
+
+  return get(child(dbRef, `quizes`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const reviews = snapshot.val();
+        return Object.values(reviews);
+      } else {
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}

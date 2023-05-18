@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import QuizIntro from './components/QuizIntro/QuizIntro';
 import Quizes from './components/Quizes/Quizes';
+import QuizResult from './components/QuizResult/QuizResult';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             <MyCart />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: '/result',
+        element: <QuizResult />,
       },
     ],
   },

@@ -1,0 +1,52 @@
+@value brandColor,borderColor from '../../common/colors.css';
+
+.div {
+  font-weight: 300;
+  height: 50%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  font-weight: 300;
+  font-size: 1.7em;
+  margin-bottom: 3em;
+}
+
+.div ul {
+  padding: 0;
+  width: 100%;
+}
+
+.div li {
+  font-size: 1.2em;
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+  border: 1px solid borderColor;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.div li:hover {
+  border: 2px solid brandColor;
+  cursor: pointer;
+  transition: border 100ms ease-in-out;
+}
+
+@media screen and (max-width: 480px) {
+  .question {
+    width: 80%;
+    font-size: 1.5em;
+  }
+
+  .div ul {
+    padding: 0;
+    width: 80%;
+  }
+
+  .div li {
+    font-size: 1em;
+  }
+}

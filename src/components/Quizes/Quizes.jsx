@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styles from './Quizes.module.css';
 import { getQuiz } from '../../service/firebase';
 import Quiz from '../Quiz/Quiz';
+import { useNavigate } from 'react-router';
 
 function Quizes() {
   const [quizData, setQuizData] = useState(null);
   const [quizindex, setIndex] = useState(0);
+  const navigate = useNavigate();
 
   async function getQuizData() {
     const data = await getQuiz();
@@ -15,22 +17,16 @@ function Quizes() {
   // Go to next question
   const goToNext = () => {
     if (quizindex === quizData.length - 1) {
-      finishQuiz();
+      navigate('/result');
     }
     setIndex(() => {
       return quizindex + 1;
     });
   };
 
-  const finishQuiz = () => {
-    console.log('finish!');
-  };
-
   useEffect(() => {
     getQuizData();
   }, []);
-
-  console.log(quizindex);
 
   return (
     <section className={styles.section}>

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Quiz.module.css';
 import { Button } from '@mui/material';
 
 function Quiz({ quizData, goToNext }) {
+  const [active, setActive] = useState(null);
+
   const onNext = () => {
-    goToNext();
+    goToNext(active);
+  };
+
+  // Updated selected option
+  const selectOption = (key) => {
+    setActive(key);
   };
 
   return (
@@ -13,7 +20,19 @@ function Quiz({ quizData, goToNext }) {
       <ul>
         {quizData &&
           Object.keys(quizData.options).map((key) => {
-            return <li key={key}>{quizData.options[key]}</li>;
+            return (
+              <li
+                key={key}
+                className={
+                  active === key ? `${styles.active}` : `${styles.inactive}`
+                }
+                onClick={() => {
+                  selectOption(key);
+                }}
+              >
+                {quizData.options[key]}
+              </li>
+            );
           })}
       </ul>
       <Button onClick={onNext} variant="contained">

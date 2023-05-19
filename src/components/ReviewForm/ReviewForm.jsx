@@ -13,7 +13,6 @@ import StarIcon from '@mui/icons-material/Star';
 
 import { useAuthContext } from '../context/AuthContext';
 import useReview from '../../hooks/useReview';
-import { reverse } from '@cloudinary/url-gen/actions/effect';
 
 function ReviewForm({ setOpenReviewForm, productId, setSuccess }) {
   const [rating, setRating] = useState(2);

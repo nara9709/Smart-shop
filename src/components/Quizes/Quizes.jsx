@@ -14,13 +14,32 @@ function Quizes() {
     const data = await getQuiz();
     setQuizData(data);
   }
+  const getSkinType = (score) => {
+    switch (true) {
+      case score >= 4 && score <= 7:
+        return 'Dry';
+
+      case score >= 8 && score <= 10:
+        return 'Slightly Dry';
+
+      case score >= 11 && score <= 13:
+        return 'Combination';
+
+      case score >= 14 && score <= 16:
+        return 'Oily';
+
+      default:
+        return null;
+    }
+  };
 
   // Go to next question
   const goToNext = (key) => {
     calScore(key);
     if (quizindex === quizData.length - 1) {
+      const type = getSkinType(score);
       navigate('/result', {
-        state: { score },
+        state: { type },
       });
     }
 

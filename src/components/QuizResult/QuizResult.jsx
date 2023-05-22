@@ -30,6 +30,8 @@ function QuizResult() {
   useEffect(() => {
     getRecomProduct(type);
   }, [type]);
+  console.log(type);
+  console.log(products);
 
   return (
     <section className={styles.section}>

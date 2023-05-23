@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import styles from './Quiz.module.css';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
-function Quiz({ quizData, goToNext }) {
+function Quiz({ quizData, goToNext, goBack }) {
   const [active, setActive] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const onNext = () => {
-    goToNext(active);
+    if (active === null) {
+      setShowAlert(true);
+    } else {
+      goToNext(active);
+    }
+  };
+
+  const onGoBack = () => {
+    goBack();
   };
 
   // Updated selected option
@@ -35,9 +47,25 @@ function Quiz({ quizData, goToNext }) {
             );
           })}
       </ul>
-      <Button onClick={onNext} variant="contained">
-        Next
-      </Button>
+      {showAlert && (
+        <Alert className={styles.alert} severity="error">
+          Please select an option!
+        </Alert>
+      )}
+      <div className={styles.btnContainer}>
+        <IconButton onClick={onGoBack} size="large">
+          <ArrowCircleLeftIcon
+            className={styles.btn}
+            fontSize="large"
+          ></ArrowCircleLeftIcon>
+        </IconButton>
+        <IconButton onClick={onNext} size="large">
+          <ArrowCircleRightIcon
+            className={styles.btn}
+            fontSize="large"
+          ></ArrowCircleRightIcon>
+        </IconButton>
+      </div>
     </div>
   );
 }

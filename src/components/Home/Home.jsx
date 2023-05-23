@@ -3,14 +3,12 @@ import 'react-slideshow-image/dist/styles.css';
 import styles from './Home.module.css';
 import useFade from '../../hooks/useFade';
 import CloseIcon from '@mui/icons-material/Close';
-import { Button, IconButton, Alert } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Bounce from '../UI/Bounce';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import WalletIcon from '@mui/icons-material/Wallet';
-import { Link } from 'react-router-dom';
-import Quizes from '../QuizIntro/QuizIntro';
 
 export default function Home() {
   const [isVisible, setVisible, fadeProps] = useFade(false, 'fadeIn');

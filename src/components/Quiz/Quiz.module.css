@@ -18,6 +18,9 @@
 .div ul {
   padding: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .div li {
@@ -29,13 +32,25 @@
 }
 
 .div li:hover {
-  border: 2px solid brandColor;
+  border: 1px solid brandColor;
   cursor: pointer;
-  transition: border 50ms ease-in;
 }
 
 .active {
   border: 2px solid brandColor;
+}
+
+.alert {
+  margin-bottom: 1em;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 3em;
 }
 
 @media screen and (max-width: 480px) {

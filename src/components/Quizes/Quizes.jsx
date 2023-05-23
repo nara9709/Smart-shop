@@ -8,28 +8,38 @@ import useProducts from '../../hooks/useProducts';
 function Quizes() {
   const [quizData, setQuizData] = useState(null);
   const [quizindex, setIndex] = useState(0);
-  const [score, setScore] = useState(0);
   const navigate = useNavigate();
   const {
     productsQuery: { data: products },
   } = useProducts();
+  const [scoreObj, setScoreObj] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+  });
 
   async function getQuizData() {
     const data = await getQuiz();
     setQuizData(data);
   }
-  const getSkinType = (score) => {
+
+  const getSkinType = () => {
+    const sumScore = Object.values(scoreObj).reduce((a, b) => a + b);
+
+    console.log(sumScore);
     switch (true) {
-      case score >= 4 && score <= 7:
+      case sumScore >= 4 && sumScore <= 7:
         return 'Dry';
 
-      case score >= 8 && score <= 10:
+      case sumScore >= 8 && sumScore <= 10:
         return 'Slightly Dry';
 
-      case score >= 11 && score <= 13:
+      case sumScore >= 11 && sumScore <= 13:
         return 'Combination';
 
-      case score >= 14 && score <= 16:
+      case sumScore >= 14 && sumScore <= 16:
         return 'Oily';
 
       default:
@@ -39,21 +49,32 @@ function Quizes() {
 
   // Go to next question
   const goToNext = (key) => {
-    calScore(key);
     // If the quiz is the last quiz, go to result page
     if (quizindex === quizData.length - 1) {
-      const type = getSkinType(score);
+      const type = getSkinType();
       const product = getRecomProduct(type);
 
       navigate('/result', {
         state: { type, product },
       });
     }
-
+    // If the quiz is not the last quiz, save score
+    const score = calScore(key);
+    scoreObj[quizindex] = score;
     // Change the index of question
     setIndex(() => {
       return quizindex + 1;
     });
+  };
+
+  const goBack = () => {
+    if (quizindex === 0) {
+      return navigate('/myskintypetest');
+    }
+    setIndex(() => {
+      return quizindex - 1;
+    });
+    scoreObj[quizindex] = 0;
   };
 
   // Get recommendation product for for the skin type
@@ -71,24 +92,28 @@ function Quizes() {
 
   // Calculate the score by selected option
   const calScore = (key) => {
+    let score = null;
+
     switch (key) {
       case 'a':
-        setScore(() => score + 1);
+        score = 1;
         break;
       case 'b':
-        setScore(() => score + 2);
+        score = 2;
         break;
       case 'c':
-        setScore(() => score + 3);
+        score = 3;
         break;
       case 'd':
-        setScore(() => score + 4);
+        score = 4;
         break;
 
       default:
-        setScore(() => score + 0);
+        score = 0;
         break;
     }
+
+    return score;
   };
 
   // Get quiz data from Firebase
@@ -102,6 +127,7 @@ function Quizes() {
         <Quiz
           quizData={quizData[quizindex]}
           goToNext={goToNext}
+          goBack={goBack}
           key={quizindex}
         />
       )}

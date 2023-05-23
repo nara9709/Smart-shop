@@ -1,41 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import useProducts from '../../hooks/useProducts';
+
 import { Button } from '@mui/material';
 import styles from './QuizResult.module.css';
+import { useAuthContext } from '../context/AuthContext';
+import { updateSkinType } from '../../service/firebase';
 
 function QuizResult() {
-  const type = useLocation().state.type;
-  // const [type, setType] = useState('');
-  const {
-    productsQuery: { isLoading, data: products },
-  } = useProducts();
-  const [product, setProduct] = useState(null);
+  let type = useLocation().state.type;
+  const product = useLocation().state.product;
   const navigate = useNavigate();
+  const { user } = useAuthContext();
 
-  // Get Recommendation product by user's type
-  const getRecomProduct = (type) => {
-    let userType = type;
-    // If user's type is 'slightly dry', change the type to 'Dry' to match with product data
+  const updateUserSkinType = () => {
     if (type === 'Slightly Dry') {
-      userType = 'Dry';
+      type = 'Dry';
     }
-    setProduct(() => {
-      return products[
-        Object.keys(products).find((key) => products[key].skintype === userType)
-      ];
-    });
+    updateSkinType(type, user.uid);
   };
 
-  useEffect(() => {
-    getRecomProduct(type);
-  }, [type]);
-  console.log(type);
-  console.log(products);
+  // If there is user info, update skin type
+  user && updateUserSkinType();
 
   return (
     <section className={styles.section}>
-      {isLoading && <p>We are analyzing your skin type..✍🏻 </p>}
+      {!product && <p>We are analyzing your skin type..✍🏻 </p>}
       {product && (
         <>
           <h1>

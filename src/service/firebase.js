@@ -79,6 +79,20 @@ async function adminUser(user) {
     });
 }
 
+// Update user skin type
+export async function updateSkinType(type, userId) {
+  return set(ref(db, 'users/' + userId), {
+    skintype: type,
+  })
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.error(error);
+      return false;
+    });
+}
+
 // Upload new product data
 export async function addNewProduct(product, image) {
   const id = uuid();
@@ -175,7 +189,6 @@ export async function addReview(productId, review) {
 }
 
 // Get reivews
-
 export async function getReviews(productId) {
   const dbRef = ref(getDatabase(firebaseApp));
 
@@ -194,7 +207,6 @@ export async function getReviews(productId) {
 }
 
 // Get quizes
-
 export async function getQuiz() {
   const dbRef = ref(getDatabase(firebaseApp));
 

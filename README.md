@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=d4a373&height=300&section=header&text=Skin%20care%20e-commerce%20website&fontSize=60&website&animation=fadeIn&fontColor=fff)
 
-#New features update
+# New features update
 <ul>
  <li>21 May 2023 <string>Skin type test</strong></li>
  </ul>

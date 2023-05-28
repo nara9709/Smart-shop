@@ -228,6 +228,25 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+            <div className={styles.testSection}>
+              <h3 className={styles.testTextFirst}>
+                You don't know what product to get?{' '}
+              </h3>
+              <h1>Analyze your skin type</h1>
+              <h3 className={styles.testTextTwo}>
+                Get recommendations for the right product✍🏻
+              </h3>
+              <Button
+                variant="contained"
+                size="large"
+                className={styles.testBtn}
+                onClick={() => {
+                  navigate('/myskintypetest');
+                }}
+              >
+                Start Skin Type Test
+              </Button>
+            </div>
             <div className={styles.introductionList}>
               <ul>
                 <li className={styles.introItem}>
@@ -258,34 +277,6 @@ export default function Home() {
                   </p>
                 </li>
               </ul>
-            </div>
-
-            <div
-              className={
-                open ? `${styles.containerAni}` : `${styles.container} `
-              }
-            >
-              <IconButton
-                className={styles.closeBtn}
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                <CloseIcon fontSize="large" />
-              </IconButton>
-              <h1>Analyze your skin type</h1>
-              <h3>
-                Get recommendations <br /> for the right product✍🏻
-              </h3>
-              <Button
-                variant="outlined"
-                className={styles.testBtn}
-                onClick={() => {
-                  navigate('/myskintypetest');
-                }}
-              >
-                Start Skin Type Test
-              </Button>
             </div>
           </section>
         </>

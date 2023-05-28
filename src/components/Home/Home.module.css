@@ -272,69 +272,40 @@
   background-color: black;
 }
 
-.container {
-  display: none;
-}
-
-.containerAni {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  padding: 10px;
-  border-radius: 10px;
-  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1678254073/Pop_a_Pimple_Properly_fifc9e.png);
+.testSection {
+  background-image: url(https://res.cloudinary.com/nara9709/image/upload/v1685315306/%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8_%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%82%E1%85%B3%E1%86%AB_%E1%84%83%E1%85%B5%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AB_1_mn1vnq.png);
+  margin-top: 2em;
+  padding: 0.5em;
+  padding-bottom: 3em;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  top: 50%;
-  left: 50%;
-  margin-top: -250px;
-  margin-left: -250px;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation-name: showUp;
-  animation-duration: 300ms;
-  box-shadow: 5.4px 10.7px 10.7px hsl(0deg 0% 0% / 0.33);
 }
 
-.containerAni .closeBtn {
-  right: -270px;
-}
-
-@keyframes showUp {
-  0% {
-    top: 100%;
-  }
-
-  100% {
-    top: 50%;
-  }
-}
-
-.containerAni h1 {
-  color: rgba(255, 255, 255, 0.795);
+.testSection h1 {
+  color: rgba(115, 105, 81, 0.795);
   font-weight: 900;
   font-size: 4em;
   text-transform: uppercase;
-  margin-top: 1.5em;
+  margin-top: 0em;
   margin-bottom: 0.2em;
 }
 
-.containerAni h3 {
-  color: rgba(255, 255, 255, 0.795);
+.testTextFirst {
+  margin-top: 3em;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.testTextTwo {
+  color: rgba(0, 0, 0, 0.795);
   text-transform: uppercase;
   font-weight: 400;
   font-size: 1.5em;
-}
-
-.testBtn {
-  margin-top: 1em;
-  font-size: 2em;
+  margin-bottom: 2em;
 }
 
 @media screen and (max-width: 1000px) {
@@ -382,33 +353,36 @@
     height: 100%;
   }
 
-  .containerAni {
-    width: 350px;
-    height: 350px;
-    top: 67%;
-    left: 67%;
+  .testSection {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    margin-top: 2em;
+    padding: 1em 0em 2em 0em;
   }
 
-  .containerAni .closeBtn {
-    right: -150px;
-  }
-
-  .containerAni h1 {
+  .testSection h1 {
+    width: 100%;
     font-weight: 700;
-    font-size: 2.2em;
+    font-size: 3em;
     text-transform: uppercase;
-    margin-top: 1.5em;
+    margin-top: 1em;
     margin-bottom: 0.2em;
   }
 
-  .containerAni h3 {
-    font-weight: 400;
-    font-size: 1.2em;
+  .testTextFirst,
+  .testTextTwo {
+    width: 100%;
+  }
+
+  .testTextTwo {
+    margin-top: 1em;
+    font-size: 0.9em;
   }
 
   .testBtn {
     margin-top: 1em;
-    font-size: 2em;
+    font-size: 1em;
   }
 
   .productNum {

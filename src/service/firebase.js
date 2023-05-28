@@ -93,6 +93,16 @@ export async function updateSkinType(type, userId) {
     });
 }
 
+// Get user type
+export async function getUserType(userId) {
+  return get(ref(db, `users/${userId}/skintype`)) //
+    .then((snapshot) => {
+      const type = snapshot.val() || {};
+
+      return type;
+    });
+}
+
 // Upload new product data
 export async function addNewProduct(product, image) {
   const id = uuid();

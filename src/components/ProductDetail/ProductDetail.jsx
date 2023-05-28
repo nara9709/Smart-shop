@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Reviews from '../Reviews/Reviews.jsx';
 import styles from './ProductDetail.module.css';
@@ -13,13 +13,16 @@ import {
   Select,
   Typography,
   Button,
+  Tooltip,
 } from '@mui/material';
 import useCarts from '../../hooks/useCarts.jsx';
 import useProducts from '../../hooks/useProducts.jsx';
 import Login from '../Login/Login.jsx';
+import { getUserType } from '../../service/firebase.js';
 
 export default function ProductDetail() {
   const { user } = useAuthContext();
+  const [userType, setUserType] = useState(null);
   const {
     image,
     title,
@@ -92,6 +95,17 @@ export default function ProductDetail() {
     setOpenConfirm(true);
   };
 
+  const getUserSkinType = () => {
+    getUserType(user.uid).then((type) => {
+      return setUserType(type);
+    });
+  };
+
+  useEffect(() => {
+    // If there is user info, get user's skin type
+    user && getUserSkinType();
+  }, []);
+
   return (
     <>
       <section className={styles.container}>
@@ -99,9 +113,16 @@ export default function ProductDetail() {
         <img className={styles.image} src={image} alt={title} />
         <div className={styles.product_info_container}>
           <div className={styles.titleContainer}>
-            <p className={styles.category}>{category}</p>
-            <h3>{title}</h3>
-            <h4>${price}</h4>
+            <div>
+              <p className={styles.category}>{category}</p>
+              <h3>{title}</h3>
+              <h4>${price}</h4>
+            </div>
+            {userType === skintype && (
+              <Tooltip title="This item is matched with your skin type! ">
+                <span className={styles.matchBadge}>Matched item✨</span>
+              </Tooltip>
+            )}
           </div>
           <p className={styles.description}>{description}</p>
           <FormControl className={styles.selectContainer} fullWidth>

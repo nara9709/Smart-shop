@@ -1,6 +1,7 @@
 import {
   Button,
   FormControl,
+  Grow,
   IconButton,
   InputLabel,
   MenuItem,
@@ -8,7 +9,7 @@ import {
   Skeleton,
   Stack,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useProducts from '../../hooks/useProducts.jsx';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Item from '../Item/Item.jsx';

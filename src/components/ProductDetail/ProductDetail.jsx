@@ -14,6 +14,7 @@ import {
   Typography,
   Button,
   Tooltip,
+  Slide,
 } from '@mui/material';
 import useCarts from '../../hooks/useCarts.jsx';
 import useProducts from '../../hooks/useProducts.jsx';
@@ -41,6 +42,7 @@ export default function ProductDetail() {
   const [openConfirm, setOpenConfirm] = useState(false);
   const { addOrUpdate } = useCarts();
   const { removeProduct } = useProducts();
+  const [onAni, setOnAni] = useState(false);
 
   // Delete product
   const deleteProduct = () => {
@@ -104,12 +106,13 @@ export default function ProductDetail() {
   useEffect(() => {
     // If there is user info, get user's skin type
     user && getUserSkinType();
+    setOnAni(true);
   }, []);
 
   return (
     <>
       <section className={styles.container}>
-        {openLogin && <Login setOpenLogin={setOpenLogin} />}
+        {openLogin && <Login setOpenLogin={setOpenLogin} />}{' '}
         <img className={styles.image} src={image} alt={title} />
         <div className={styles.product_info_container}>
           <div className={styles.titleContainer}>
@@ -119,9 +122,11 @@ export default function ProductDetail() {
               <h4>${price}</h4>
             </div>
             {userType === skintype && (
-              <Tooltip title="This item is matched with your skin type! ">
-                <span className={styles.matchBadge}>Matched item✨</span>
-              </Tooltip>
+              <Slide direction="left" in={onAni} mountOnEnter unmountOnExit>
+                <Tooltip title="This item is matched with your skin type! ">
+                  <span className={styles.matchBadge}>Matched item✨</span>
+                </Tooltip>
+              </Slide>
             )}
           </div>
           <p className={styles.description}>{description}</p>
